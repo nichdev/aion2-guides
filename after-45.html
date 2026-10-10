@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aion 2 Chanter: What to Do After Level 45</title>
+<style>
+
+:root{
+  --bg:#0b0d14; --bg2:#11141f; --card:#161a28; --card2:#1c2133; --line:#2a3048;
+  --text:#e7e9f2; --muted:#9aa1bb; --dim:#6d7491;
+  --gold:#f0c46b; --gold2:#c9953a; --teal:#4fd1c5; --violet:#a78bfa; --red:#f87171; --green:#6ee7a8; --blue:#60a5fa;
+  --r:14px; --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--text);
+  background:radial-gradient(1200px 600px at 80% -10%,rgba(167,139,250,.14),transparent 60%),
+             radial-gradient(900px 500px at -10% 10%,rgba(240,196,107,.10),transparent 60%),var(--bg);}
+a{color:var(--teal)} a:hover{color:#8ff0e6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{line-height:1.25;margin:0 0 .5em}
+h2{font-size:1.65rem;display:flex;align-items:center;gap:.6rem}
+h2 .num{font-size:.8rem;font-weight:700;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;padding:.2rem .5rem}
+h3{font-size:1.15rem;color:var(--gold)}
+p{margin:.4em 0 .9em}
+small,.muted{color:var(--muted)}
+
+/* Hero */
+header.hero{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(240,196,107,.35);border-radius:999px;padding:.25rem .75rem;margin-bottom:14px}
+.hero h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(90deg,#fff,var(--gold) 60%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:760px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-size:.82rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.3rem .75rem;color:var(--muted);text-decoration:none}
+.chip b{color:var(--text)}
+
+/* Nav */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(11,13,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:10px;padding-bottom:10px}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;padding:.4rem .75rem;border-radius:8px}
+nav.top a:hover,nav.top a.active{color:var(--text);background:var(--card2)}
+nav.top a.brand{color:var(--gold)}
+
+section{padding:44px 0 8px}
+.card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+/* TL;DR */
+.tldr{border:1px solid rgba(240,196,107,.45);background:linear-gradient(135deg,rgba(240,196,107,.10),rgba(167,139,250,.06) 60%,var(--card))}
+.tldr h2{color:var(--gold)}
+.tldr ol{margin:0;padding-left:1.3rem}
+.tldr li{margin:.45rem 0}
+.tldr li b{color:#fff}
+
+/* Callouts */
+.callout{border-left:4px solid var(--teal);background:rgba(79,209,197,.07);border-radius:10px;padding:12px 16px;margin:14px 0}
+.callout.warn{border-color:var(--red);background:rgba(248,113,113,.07)}
+.callout.gold{border-color:var(--gold);background:rgba(240,196,107,.07)}
+.callout b:first-child{color:#fff}
+
+/* Badges */
+.lv{display:inline-block;font-weight:800;font-size:.8rem;padding:.12rem .5rem;border-radius:6px;background:rgba(240,196,107,.15);color:var(--gold);border:1px solid rgba(240,196,107,.4);white-space:nowrap}
+.lv.max{background:rgba(110,231,168,.13);color:var(--green);border-color:rgba(110,231,168,.4)}
+.spec{display:inline-grid;place-items:center;width:1.55rem;height:1.55rem;border-radius:50%;font-weight:800;font-size:.8rem;background:rgba(167,139,250,.18);color:#d7c9ff;border:1px solid rgba(167,139,250,.55);margin-right:3px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.1rem .45rem;border-radius:5px;margin:1px 2px 1px 0;white-space:nowrap;border:1px solid}
+.v1{color:#93c5fd;border-color:rgba(96,165,250,.45);background:rgba(96,165,250,.1)}
+.v2{color:#fca5a5;border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.1)}
+.v3{color:#86efac;border-color:rgba(110,231,168,.45);background:rgba(110,231,168,.1)}
+.core{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+.skip{color:var(--red);border-color:rgba(248,113,113,.5);background:rgba(248,113,113,.08)}
+.opt{color:var(--muted);border-color:var(--line);background:var(--card2)}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:12px 0 18px}
+table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:640px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card2);color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+td.skill{font-weight:700;color:#fff;white-space:nowrap}
+td.skill small{display:block;font-weight:500;color:var(--dim)}
+tr.hl td{background:rgba(240,196,107,.05)}
+
+/* Phase banner */
+.phase{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.phase .pill{font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .8rem;border-radius:8px}
+.pill.early{background:rgba(96,165,250,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.4)}
+.pill.end{background:rgba(248,113,113,.15);color:#fca5a5;border:1px solid rgba(248,113,113,.4)}
+
+/* Progress path */
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin-top:10px}
+.path .stop{position:relative;padding:18px 16px 16px;text-align:center}
+.path .stop:before{content:"";position:absolute;top:31px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--red))}
+.path .stop:first-child:before{left:50%} .path .stop:last-child:before{right:50%}
+.path .dot{position:relative;z-index:1;width:30px;height:30px;margin:0 auto 10px;border-radius:50%;background:var(--bg);border:3px solid var(--gold);display:grid;place-items:center;font-weight:800;font-size:.8rem;color:var(--gold)}
+.path h4{margin:0 0 .3rem;color:#fff}
+.path p{font-size:.9rem;color:var(--muted);margin:0}
+
+/* Macro diagram */
+.macro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.col-diagram{display:flex;flex-direction:column-reverse;gap:8px;margin:14px 0 8px}
+.slot{display:flex;align-items:center;gap:12px;border-radius:10px;padding:10px 12px;border:1px solid var(--line);background:var(--card2)}
+.slot .row{flex:0 0 auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;color:var(--dim);width:48px}
+.slot .ico{flex:0 0 38px;height:38px;border-radius:9px;display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#0b0d14}
+.slot .nm{font-weight:700}
+.slot .nm small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
+.slot.r0{border-color:rgba(240,196,107,.6);background:linear-gradient(90deg,rgba(240,196,107,.16),var(--card2))}
+.i-dc{background:linear-gradient(135deg,#f0c46b,#c9953a)}
+.i-ss{background:linear-gradient(135deg,#4fd1c5,#2a9d92)}
+.i-ic{background:linear-gradient(135deg,#a78bfa,#7c5cd6)}
+.i-ib{background:linear-gradient(135deg,#f87171,#c24141)}
+.i-mw{background:linear-gradient(135deg,#60a5fa,#2f6fca)}
+.base{text-align:center;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border-top:2px dashed var(--line);padding-top:6px}
+.arrow-up{text-align:center;font-size:.78rem;color:var(--muted)}
+.step2{margin-top:10px;border:1px dashed rgba(248,113,113,.55);border-radius:10px;padding:10px 12px;display:flex;gap:12px;align-items:center;background:rgba(248,113,113,.05)}
+
+/* Steps */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+ol.steps>li{counter-increment:s;position:relative;padding:12px 14px 12px 58px;margin-bottom:10px;background:var(--card2);border:1px solid var(--line);border-radius:12px}
+ol.steps>li:before{content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2))}
+kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;background:#0e111b;border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:.05rem .4rem;color:#fff;white-space:nowrap}
+
+/* Disagree */
+.vs td:nth-child(2),.vs td:nth-child(3){color:var(--muted)}
+.pick{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--bg);background:var(--green);border-radius:5px;padding:.1rem .45rem;margin-bottom:4px}
+
+/* Details */
+details{background:var(--card2);border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:13px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.3rem;color:var(--gold);line-height:1}
+details[open] summary:after{content:"–"}
+details .inner{padding:0 16px 14px;color:var(--muted)}
+details .inner b{color:var(--text)}
+
+/* Sources */
+.src{display:flex;flex-direction:column;gap:6px}
+.src a.title{font-weight:700;text-decoration:none;color:#fff}
+.src a.title:hover{color:var(--teal)}
+footer{padding:40px 0 60px;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line);margin-top:40px}
+ul.clean{padding-left:1.1rem;margin:.3rem 0} ul.clean li{margin:.3rem 0}
+
+@media (max-width:860px){
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .macro-grid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  body{font-size:15px}
+  .wrap{padding:0 14px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .card{padding:16px}
+  h2{font-size:1.35rem}
+  header.hero{padding:36px 0 20px}
+  .path{grid-template-columns:1fr}
+  .path .stop{text-align:left;padding:10px 0 10px 46px}
+  .path .stop:before{top:0;bottom:0;left:14px!important;right:auto!important;width:3px;height:auto;background:linear-gradient(180deg,var(--blue),var(--gold),var(--red))}
+  .path .stop:first-child:before{top:24px}.path .stop:last-child:before{bottom:calc(100% - 24px)}
+  .path .dot{position:absolute;left:0;top:10px;margin:0}
+  /* stack tables into cards on mobile */
+  table.stack{min-width:0}
+  table.stack thead{display:none}
+  table.stack tr{display:block;border-bottom:1px solid var(--line);padding:10px 12px}
+  table.stack tr:last-child{border-bottom:0}
+  table.stack td{display:block;border:0;padding:4px 0}
+  table.stack td[data-l]:before{content:attr(data-l);display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);font-weight:700}
+  table.stack td.skill{font-size:1.05rem;white-space:normal}
+}
+.lvs{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.lvs .spec{margin-right:0}
+.macro-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+@media (max-width:980px){.macro-layout{grid-template-columns:1fr}}
+@media (max-width:600px){
+  table.stack tr{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
+  table.stack td.skill,table.stack td:last-child{grid-column:1/-1}
+  table.stack tr.hl{background:rgba(240,196,107,.05)}
+  table.stack tr.hl td,table.stack tbody tr:hover td{background:transparent}
+}
+
+.wrap{max-width:1120px}
+.sc{display:inline-flex;align-items:center;gap:3px;font-size:.68rem;font-weight:700;line-height:1;padding:.2rem .4rem;border-radius:5px;margin:2px 3px 2px 0;white-space:nowrap;border:1px solid;text-decoration:none;vertical-align:1px}
+.sc i{font-style:normal;font-weight:600;opacity:.85}
+.sc.vid{color:#fca5a5;border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.1)}
+.sc.web{color:#7dd3fc;border-color:rgba(96,165,250,.45);background:rgba(96,165,250,.1)}
+.sc.red{color:#fdba74;border-color:rgba(251,146,60,.45);background:rgba(251,146,60,.1)}
+.sc.ear{color:#d7c9ff;border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.12)}
+.sc.low{border-style:dashed}
+.sc:hover{filter:brightness(1.25)}
+.srcs{margin-top:6px}
+/* Gate timeline */
+.gates{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));position:relative}
+.gates:before{content:"";position:absolute;left:4%;right:4%;top:21px;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold) 55%,var(--red));border-radius:3px}
+.gate{position:relative;padding:0 6px;text-align:center}
+.gate .gs{position:relative;z-index:1;display:inline-block;font-weight:800;font-size:.86rem;padding:.55rem .55rem;min-width:58px;border-radius:999px;background:var(--bg);border:3px solid var(--gold);color:var(--gold)}
+.gate.key .gs{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg)}
+.gate.ludra .gs{border-color:var(--red);color:var(--red);background:repeating-linear-gradient(135deg,#1a0f12 0 6px,#24121a 6px 12px)}
+.gate h4{margin:12px 0 4px;font-size:.95rem;color:#fff}
+.gate p{margin:0;font-size:.82rem;color:var(--muted);line-height:1.45}
+.gate p b{color:var(--text)}
+.flag{display:inline-block;margin:0 0 6px;font-size:.7rem;font-weight:800;color:#fff;background:var(--red);border-radius:5px;padding:.12rem .4rem}
+.startnote{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:22px;font-size:.92rem;color:var(--muted)}
+.startnote .gs0{font-weight:800;color:var(--blue);border:2px dashed var(--blue);border-radius:999px;padding:.2rem .6rem}
+@media (max-width:1000px){
+ .gates{grid-template-columns:1fr;gap:0}
+ .gates:before{left:31px;right:auto;top:10px;bottom:10px;width:3px;height:auto;background:linear-gradient(180deg,var(--blue),var(--gold) 55%,var(--red))}
+ .gate{display:grid;grid-template-columns:66px 1fr;gap:14px;text-align:left;padding:0 0 18px}
+ .gate .gs{min-width:0;width:64px;text-align:center;align-self:start}
+ .gate h4{margin:4px 0 4px;font-size:1.02rem}
+ .gate p{font-size:.92rem}
+}
+/* Checklists */
+.check{list-style:none;margin:0;padding:0}
+.check li{border:1px solid var(--line);background:var(--card2);border-radius:11px;margin-bottom:8px;transition:opacity .2s,border-color .2s}
+.check label{display:flex;gap:12px;align-items:flex-start;padding:11px 14px;cursor:pointer}
+.check input{position:absolute;opacity:0;pointer-events:none}
+.check .box{flex:0 0 22px;height:22px;border-radius:6px;border:2px solid var(--gold2);margin-top:2px;display:grid;place-items:center;transition:background .15s}
+.check input:checked+.box{background:linear-gradient(135deg,var(--green),#2fb57a);border-color:var(--green)}
+.check input:checked+.box:after{content:"✓";color:var(--bg);font-weight:900;font-size:.85rem}
+.check input:focus-visible+.box{outline:2px solid var(--teal);outline-offset:2px}
+.check li:has(input:checked){opacity:.6;border-color:rgba(110,231,168,.35)}
+.ckhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.ckhead h3{margin:0}
+.prog{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}
+.bar{width:120px;height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--green));transition:width .25s}
+button.reset{font:inherit;font-size:.8rem;font-weight:700;color:var(--text);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.35rem .7rem;cursor:pointer}
+button.reset:hover{border-color:var(--gold);color:var(--gold)}
+.stamp{font-size:.75rem;color:var(--dim);margin-top:6px}
+/* Stats */
+.stat{text-align:center;padding:18px 12px}
+.stat .n{font-size:1.9rem;font-weight:800;color:var(--gold);line-height:1.1}
+.stat .l{font-size:.85rem;color:var(--muted);margin-top:4px}
+.derived{font-size:.7rem;font-weight:700;color:var(--violet);border:1px dashed rgba(167,139,250,.5);border-radius:5px;padding:.05rem .35rem;white-space:nowrap}
+.phases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.ph{border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--card2)}
+.ph .when{font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--teal)}
+.ph h4{margin:4px 0 6px;color:#fff}
+.ph p{margin:0;font-size:.92rem;color:var(--muted)}
+.calc{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.calc input[type=number]{font:inherit;width:110px;background:#0e111b;color:#fff;border:1px solid var(--line);border-radius:8px;padding:.4rem .6rem}
+.calc label{display:flex;gap:6px;align-items:center;font-size:.92rem}
+.calc output{font-weight:700;color:var(--gold)}
+/* Coupon */
+.coupon{display:flex;gap:18px;align-items:center;flex-wrap:wrap;border:2px dashed var(--gold);border-radius:var(--r);padding:18px 20px;background:linear-gradient(135deg,rgba(240,196,107,.13),rgba(167,139,250,.06));margin-top:22px}
+.coupon .code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:1.3rem;font-weight:800;letter-spacing:.06em;color:#fff;background:#0e111b;border:1px solid var(--gold2);border-radius:10px;padding:.45rem .8rem;word-break:break-all}
+.coupon .exp{font-weight:800;color:var(--red)}
+.coupon .info{flex:1 1 280px}
+.coupon .info p{margin:.2rem 0}
+button.copy{font:inherit;font-weight:800;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border:0;border-radius:9px;padding:.5rem .9rem;cursor:pointer}
+/* Lanes */
+.lanes{display:grid;gap:12px}
+.lane{display:grid;grid-template-columns:130px repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}
+.lane .lname{font-weight:800;color:#fff;font-size:.9rem;display:flex;align-items:center}
+.node{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card2);position:relative}
+.node b{color:#fff;display:block}
+.node small{color:var(--muted)}
+.node .il{float:right;font-size:.72rem;font-weight:800;color:var(--gold);border:1px solid rgba(240,196,107,.4);border-radius:5px;padding:.05rem .35rem}
+.node:not(:last-child):after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--gold);font-weight:800;z-index:1}
+.odds{display:flex;gap:8px;align-items:flex-end;height:120px;margin:10px 0 4px}
+.odds div{flex:1;background:linear-gradient(180deg,var(--gold),var(--gold2));border-radius:6px 6px 0 0;position:relative;min-width:0}
+.odds div span{position:absolute;top:-20px;left:0;right:0;text-align:center;font-size:.8rem;font-weight:800;color:#fff}
+.oddsl{display:flex;gap:8px}.oddsl span{flex:1;text-align:center;font-size:.72rem;color:var(--dim)}
+.conf{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;border-radius:5px;padding:.12rem .4rem}
+.conf.high{color:var(--green);background:rgba(110,231,168,.1);border:1px solid rgba(110,231,168,.35)}
+.conf.med{color:var(--gold);background:rgba(240,196,107,.1);border:1px solid rgba(240,196,107,.35)}
+.conf.low{color:var(--red);background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.35)}
+.src .note{font-size:.88rem;color:var(--muted);margin:.2rem 0}
+.tslist{font-size:.85rem;line-height:1.9}
+.tslist small{color:var(--dim)}
+a.ts{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;text-decoration:none;background:#0e111b;border:1px solid var(--line);border-radius:5px;padding:.05rem .35rem}
+a.url{word-break:break-all;font-size:.85rem}
+.card h3 .sc{vertical-align:2px}
+.cmp{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:10px 0}
+.cmp>div{padding:12px 14px;font-size:.92rem}
+.cmp .was{background:rgba(255,255,255,.02);color:var(--muted);border-right:1px solid var(--line)}
+.cmp .now{background:rgba(79,209,197,.05)}
+.cmp .hd{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);display:block;margin-bottom:4px}
+@media (max-width:860px){.phases{grid-template-columns:1fr}.lane{grid-template-columns:1fr}.node:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-15px;transform:translateX(-50%)}.lane{gap:14px}.lane .lname{margin-top:6px}}
+@media (max-width:600px){.grid.stats{grid-template-columns:1fr 1fr}.stat{padding:14px 8px}.stat .n{font-size:1.5rem}.cmp{grid-template-columns:1fr}.cmp .was{border-right:0;border-bottom:1px solid var(--line)}.coupon .code{font-size:1.1rem}table.stack tr{grid-template-columns:1fr!important}}
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Aion 2 · Chanter · Global · PvE</span>
+    <h1>Aion 2 Chanter: What to Do After Level 45</h1>
+    <p class="lead">You just hit 45 on a global server. This guide takes you from about 700 GS up the gear-score ladder to endgame, and covers where your energy goes, what to do each day and week, and how your Chanter build changes along the way. Compiled 10 Oct 2026, five days after global launch.</p>
+    <div class="chips">
+      <a class="chip" href="#sources"><b>5 videos</b> · timestamped</a>
+      <a class="chip" href="#sources"><b>9 sites</b> + 2 Reddit threads</a>
+      <a class="chip" href="chanter-build.html">Earlier: <b>Chanter PvE Build Guide</b> ↗</a>
+      <a class="chip" href="gs-1700.html">Earlier: <b>GS guide</b> ↗</a>
+    </div>
+    <div class="coupon" id="coupon">
+      <div class="code" id="code">TAKEFLIGHTAION2</div>
+      <button class="copy" type="button" id="copyBtn">Copy code</button>
+      <div class="info">
+        <p><b>Coupon: 4 Odyle Energy.</b> <span class="exp">Expires 13 Oct</span> <span id="countdown" class="muted"></span> <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></p>
+        <p class="muted" style="font-size:.88rem">Other dates: Twitch Drops viewing ends 16 Oct (claim by 30 Oct). Launch rewards need a login before 1 Dec 2026. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#tldr">⚡ TL;DR</a>
+    <a href="#gates">GS Gates</a>
+    <a href="#to1400">45 → 1400</a>
+    <a href="#energy">Energy</a>
+    <a href="#routine">Routine</a>
+    <a href="#gear">Gear</a>
+    <a href="#arcana">Arcana</a>
+    <a href="#build">Build</a>
+    <a href="#disagree">Disagreements</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="tldr">
+  <div class="card tldr">
+    <h2>⚡ TL;DR: your first 7 moves</h2>
+    <ol>
+      <li><b>Finish the MSQ.</b> Its last step needs <span class="lv">1000 GS</span>, and you'll be around 700 at 45. <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=63" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 1:03 (caption-based, may be ~30 s off)">V3 <i>1:03</i></a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=90" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 1:30 (caption-based, may be ~30 s off)">V2 <i>1:30</i></a></li>
+      <li><b>Clear all the free one-time content first:</b> regional (green) quests, sealed dungeons, and "?" Strongholds. That's about +180 GS (58 + 122) and 2–3 hours. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=212" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 3:32 (caption-based, may be ~30 s off)">V1 <i>3:32</i></a></li>
+      <li><b>Weapon and guard to +10</b> (guaranteed). Everything else to +5. <b>Belt and amulet</b>: +10 → Substance Morph, then stop at Unique +0. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=90" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 1:30 (caption-based, may be ~30 s off)">V2 <i>1:30</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></li>
+      <li><b>Don't spend Odyle before 1400.</b> Skip Draupnir and Krao. Only spend the overflow if you're near the cap. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=271" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 4:31 (caption-based, may be ~30 s off)">V5 <i>4:31</i></a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a></li>
+      <li><b>At 1400, put your energy into Vakron / Urugugu Conquest.</b> You get a pity pick every 21 claims. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=543" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 9:03 (caption-based, may be ~30 s off)">V2 <i>9:03</i></a></li>
+      <li><b>Spend every Daevanion crystal</b> (+1 GS each). Take the Chanter blue nodes first: Dark Crush, Onslaught, Spinning Strike, Incandescent Blow. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></li>
+      <li><b>Redeem <kbd>TAKEFLIGHTAION2</kbd> before 13 Oct.</b> Run the Ascension Trial and daily dungeon <i>late</i> in the week. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a></li>
+    </ol>
+  </div>
+  <div class="callout gold"><b>Source chips:</b> <a class="sc vid" href="#sources">V2 <i>1:30</i></a> = video, jumps to that timestamp (caption-based, so up to ~30 s off). <a class="sc web" href="#sources">W1</a> = website. <a class="sc red" href="#sources">R1</a> = Reddit. A dashed border means low weight (pre-global or a gold-seller site).</div>
+</section>
+
+<section id="gates">
+  <h2><span class="num">01</span> The GS gate roadmap</h2>
+  <p class="muted">Every source agrees on the shape of the ladder. FRESHY's point is worth remembering: GS is mostly a key to the next door. Later on, Arcana, Daevanion, pets/Genus, Pantheon and wings matter more for real power. <a class="sc vid" href="https://youtu.be/vBpC7bW7DGs?t=150" target="_blank" rel="noopener" title="FRESHY: You Hit Level 45… Now What? at 2:30 (caption-based, may be ~30 s off)">V4 <i>2:30-3:31</i></a></p>
+  <div class="card">
+    <div class="startnote"><span class="gs0">~700</span> where you are at 45 <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=63" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 1:03 (caption-based, may be ~30 s off)">V3 <i>1:03</i></a> · V1 reached 1000 once the MSQ was done <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=64" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 1:04 (caption-based, may be ~30 s off)">V1 <i>1:04</i></a></div>
+    <ol class="gates"><li class="gate "><div class="gs">1000</div><div class="gbody"><h4>Finish the MSQ</h4><p>The last MSQ step needs 1000 GS. Opens the <b>Abyss</b>, <b>Ascension Trial</b> and the <b>guard reward</b>.</p><div class="srcs"><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=90" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 1:30 (caption-based, may be ~30 s off)">V2 <i>1:30</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=183" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 3:03 (caption-based, may be ~30 s off)">V3 <i>3:03</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div></div></li><li class="gate key"><div class="gs">1400</div><div class="gbody"><h4>Vakron & Urugugu</h4><p><b>Vakron Sky Island</b> and <b>Urugugu Canyon</b> (Conquest + Exploration, item level 70). Your first real Odyle sink.</p><div class="srcs"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=1" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 0:01 (caption-based, may be ~30 s off)">V2 <i>0:01</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=301" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 5:01 (caption-based, may be ~30 s off)">V3 <i>5:01</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=241" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 4:01 (caption-based, may be ~30 s off)">V5 <i>4:01</i></a></div></div></li><li class="gate "><div class="gs">1600</div><div class="gbody"><h4>Transcendence S1</h4><p>Transcendence stage 1, the start of <b>Arcana</b> cards.</p><div class="srcs"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=480" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 8:00 (caption-based, may be ~30 s off)">V3 <i>8:00</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div></div></li><li class="gate "><div class="gs">1900</div><div class="gbody"><h4>Transcendence S2</h4><p>Transcendence stage 2 (more Arcana).</p><div class="srcs"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=572" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 9:32 (caption-based, may be ~30 s off)">V3 <i>9:32</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div></div></li><li class="gate key"><div class="gs">2100</div><div class="gbody"><h4>Horn Den & Fire Temple</h4><p><b>Ferocious Horn Den</b> and <b>Fire Temple</b>, item level 86.</p><div class="srcs"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=635" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 10:35 (caption-based, may be ~30 s off)">V3 <i>10:35</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></div></div></li><li class="gate "><div class="gs">2200</div><div class="gbody"><h4>Transcendence S3</h4><p>Stage 3: Unique Arcana cards. (V3 just says "inside 2100–2800".)</p><div class="srcs"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=662" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:02 (caption-based, may be ~30 s off)">V3 <i>11:02</i></a></div></div></li><li class="gate "><div class="gs">2500</div><div class="gbody"><h4>Transcendence S4</h4><p>Stage 4: Unique Arcana cards.</p><div class="srcs"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></div></div></li><li class="gate ludra"><div class="gs">2800</div><div class="gbody"><h4>Ludra raid</h4><span class="flag">⛔ Pulled from global</span><p>10 players (2×5). Item level 102 weapons, 1 rewarded kill a week.</p><div class="srcs"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=635" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 10:35 (caption-based, may be ~30 s off)">V3 <i>10:35</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener" title="Aion 2 Companion: dungeons &amp; raids">W4</a></div></div></li></ol>
+  </div>
+  <div class="callout warn"><b>⛔ Ludra is currently pulled from global.</b> NC will announce its return date <b>by 16 Oct</b>. That's the date of the announcement, not the reopening. Don't plan your week around it yet. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2atlas.wiki/wiki/global-sanctuary-status/" target="_blank" rel="noopener" title="AION 2 Atlas: global Ludra status">W3</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></div>
+  <div class="callout"><b>About 1400 vs 1600:</b> the pre-global V1 video lists Vakron/Urugugu at 1.6k. On global it's <b>1400</b> (global client data). See <a href="#disagree">disagreements</a>. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=1" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 0:01 (caption-based, may be ~30 s off)">V2 <i>0:01</i></a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=693" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 11:33 (caption-based, may be ~30 s off)">V1 <i>11:33</i></a></div>
+</section>
+
+<section id="to1400">
+  <h2><span class="num">02</span> 45 → 1400 without spending energy</h2>
+  <p class="muted">The sources agree: one-time content first, because it's free GS. Check things off as you go. Progress is saved in this browser.</p>
+  <div class="card">
+    <div class="ckhead"><h3>Road to 1400</h3><div class="prog"><span class="bar"><i></i></span><span class="cnt"></span><button class="reset" type="button" data-reset="to1400">Reset</button></div></div>
+    <ul class="check" data-list="to1400"><li><label><input type="checkbox" data-k="to1400-0"><span class="box"></span><span class="txt"><b>Clear the one-time map content:</b> regional (green) quests, the sealed dungeons and the Strongholds marked <b>"?"</b>. They give Daevanion crystals (+1 GS each once spent), Wisdom Stones, and belt scrolls from the Strongholds. W1 counts 58 regional quests (+58 GS), 61 sealed dungeons (+122 GS) and 15 Strongholds (30 belt scrolls). Takes about 2–3 h <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=212" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 3:32 (caption-based, may be ~30 s off)">V1 <i>3:32</i></a>. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=32" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 0:32 (caption-based, may be ~30 s off)">V2 <i>0:32-1:30</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=63" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 1:03 (caption-based, may be ~30 s off)">V3 <i>1:03</i></a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=150" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 2:30 (caption-based, may be ~30 s off)">V1 <i>2:30-4:32</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://gamerblurb.com/guides/aion-2-what-to-do-after-level-45" target="_blank" rel="noopener" title="gamerblurb: after 45">W7</a></span></label></li><li><label><input type="checkbox" data-k="to1400-1"><span class="box"></span><span class="txt"><b>Weapon and guard to +10.</b> Success is guaranteed. Each costs 406,430 Kina and 16,195 stones. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=90" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 1:30 (caption-based, may be ~30 s off)">V2 <i>1:30</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=91" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 1:31 (caption-based, may be ~30 s off)">V3 <i>1:31</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-2"><span class="box"></span><span class="txt"><b>All other quest gear to +5 only.</b> V3 says Draupnir gear to +5 as well. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=122" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 2:02 (caption-based, may be ~30 s off)">V2 <i>2:02</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=211" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 3:31 (caption-based, may be ~30 s off)">V3 <i>3:31</i></a></span></label></li><li><label><input type="checkbox" data-k="to1400-3"><span class="box"></span><span class="txt"><b>Belt (Strongholds) and amulet (feathers → Monolith Lv30):</b> +10, unequip, then Substance Morph to the next grade. Rare→Epic before 1000 (99 GS per 1M Kina, the best value), Epic→Unique +0 after 1000, then <b>stop</b>: Unique +0→+10 is only 2 GS per 1M Kina. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=183" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 3:03 (caption-based, may be ~30 s off)">V2 <i>3:03-4:30</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=91" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 1:31 (caption-based, may be ~30 s off)">V3 <i>1:31</i></a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=272" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 4:32 (caption-based, may be ~30 s off)">V1 <i>4:32-5:02</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=662" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 11:02 (caption-based, may be ~30 s off)">V5 <i>11:02</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-4"><span class="box"></span><span class="txt"><b>Clash runes: +1 only.</b> A fail at +2 or higher destroys the rune. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=270" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 4:30 (caption-based, may be ~30 s off)">V2 <i>4:30-5:03</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-5"><span class="box"></span><span class="txt"><b>Fill every socket with cheap stones.</b> Line colour sets the GS: gray +1, green +2, blue +3, yellow +4. Reroll until you get greens. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=150" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 2:30 (caption-based, may be ~30 s off)">V2 <i>2:30</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=211" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 3:31 (caption-based, may be ~30 s off)">V3 <i>3:31</i></a><a class="sc web" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener" title="MetaRoad: what to upgrade first">W6</a></span></label></li><li><label><input type="checkbox" data-k="to1400-6"><span class="box"></span><span class="txt"><b>Spacetime Rift</b> (every 3 h, 1 h inside, first one at 7 AM per V2): each enemy-faction sealed dungeon gives about 2.5k enhance stones and 1k AP, plus the rift quests. W1: 61 dungeons = 152,500 stones. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=303" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 5:03 (caption-based, may be ~30 s off)">V2 <i>5:03-6:03</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=360" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 6:00 (caption-based, may be ~30 s off)">V3 <i>6:00</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=451" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 7:31 (caption-based, may be ~30 s off)">V5 <i>7:31-8:01</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-7"><span class="box"></span><span class="txt"><b>Daevanion crystal shops:</b> Shugo Festival shop (prices step from 50 up to 400 tokens) and Nightmare Trade Shop → Growth (300 fragments each), 50 crystals from each. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=421" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 7:01 (caption-based, may be ~30 s off)">V2 <i>7:01-8:33</i></a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=333" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 5:33 (caption-based, may be ~30 s off)">V3 <i>5:33</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-8"><span class="box"></span><span class="txt"><b>Abyss (1000+ GS):</b> Lower Reshanta feathers (200 = 36 Azphel crystals), Commander/Merchant weekly scroll quests, artifacts. <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=784" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 13:04 (caption-based, may be ~30 s off)">V1 <i>13:04-17:02</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-9"><span class="box"></span><span class="txt"><b>Pets / Genus</b> in your spare time. Big CP gain, but no GS. <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=1141" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 19:01 (caption-based, may be ~30 s off)">V1 <i>19:01</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1950" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 32:30 (caption-based, may be ~30 s off)">V5 <i>32:30-35:32</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="to1400-10"><span class="box"></span><span class="txt"><b>Spend every Daevanion crystal</b> (1 GS each). Chanter: blue nodes first, see <a href="#build">section 08</a>. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=61" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 1:01 (caption-based, may be ~30 s off)">V2 <i>1:01</i></a></span></label></li><li><label><input type="checkbox" data-k="to1400-11"><span class="box"></span><span class="txt"><b>Keep your Odyle banked</b> the whole time. Don't touch Draupnir/Krao. Only spend if you're about to hit the cap. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=271" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 4:31 (caption-based, may be ~30 s off)">V5 <i>4:31</i></a><a class="sc web" href="https://gamerblurb.com/guides/aion-2-what-to-do-after-level-45" target="_blank" rel="noopener" title="gamerblurb: after 45">W7</a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a></span></label></li></ul>
+  </div>
+</section>
+
+<section id="energy">
+  <h2><span class="num">03</span> Energy (Odyle) plan</h2>
+  <p class="muted">Raw numbers come from W1. Numbers marked <span class="derived">math</span> are simple arithmetic on those numbers, not quoted from a source.</p>
+  <div class="grid g4 stats">
+    <div class="card stat"><div class="n">+15</div><div class="l">every 3 h<br><small>(about 3 claims a day)</small> <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div></div>
+    <div class="card stat"><div class="n">40</div><div class="l">Odyle per claim <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div></div>
+    <div class="card stat"><div class="n">560</div><div class="l">cap · <b>840</b> with membership <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div></div>
+    <div class="card stat"><div class="n">14 / 21</div><div class="l">claims banked at cap <span class="derived">math</span><br><small>560÷40 · 840÷40</small></div></div>
+  </div>
+
+  <h3 style="margin-top:24px">The three phases</h3>
+  <div class="phases">
+    <div class="ph"><div class="when">45 → 1400</div><h4>🏦 Bank it</h4><p>Skip the 1-star dungeons (Draupnir/Krao). If you're about to hit the cap, spend only the overflow. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=271" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 4:31 (caption-based, may be ~30 s off)">V5 <i>4:31</i></a><a class="sc web" href="https://gamerblurb.com/guides/aion-2-what-to-do-after-level-45" target="_blank" rel="noopener" title="gamerblurb: after 45">W7</a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a><a class="sc web low" href="https://www.mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html" target="_blank" rel="noopener" title="mmoexp daily/weekly (low weight)">W9</a></p></div>
+    <div class="ph"><div class="when">1400+</div><h4>⚔️ Vakron / Urugugu</h4><p>They pay 300k Kina per claim vs 200k in 1-star dungeons, and drop item level 70 gear. Conquest pity every <b>21</b> claims. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></p></div>
+    <div class="ph"><div class="when">2100+</div><h4>🔥 Horn Den</h4><p>Horn Den Conquest pity every <b>28</b> claims. Ludra (40 Odyle, 1 rewarded kill a week) once it's back. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc web" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener" title="Aion 2 Companion: dungeons &amp; raids">W4</a></p></div>
+  </div>
+
+  <h3 style="margin-top:24px">Pity counts</h3>
+  <div class="tbl-wrap"><table class="stack">
+    <thead><tr><th>Content</th><th>Pity</th><th>Odyle to reach it <span class="derived">math</span></th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="skill">Exploration</td><td data-l="Pity"><b>One-time pick after 3 claims</b></td><td data-l="Odyle">120</td><td data-l="Notes">Save the pick for an armour slot your drops didn't fill. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=543" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 9:03 (caption-based, may be ~30 s off)">V2 <i>9:03-9:30</i></a></td></tr>
+      <tr class="hl"><td class="skill">Vakron / Urugugu Conquest</td><td data-l="Pity"><b>Pick every 21 claims</b></td><td data-l="Odyle">840 <small class="muted">(one full membership cap, or ~7 days of regen)</small></td><td data-l="Notes">W1 confirms 21 for both. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=543" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 9:03 (caption-based, may be ~30 s off)">V2 <i>9:03-9:30</i></a></td></tr>
+      <tr><td class="skill">Horn Den Conquest</td><td data-l="Pity"><b>Pick every 28 claims</b></td><td data-l="Odyle">1,120</td><td data-l="Notes">2100 GS content. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><b>Pity order:</b> V2 does Exploration ×3 first, then Conquest ×21, then opens both boxes. W1 goes Conquest first and uses Exploration for the last empty armour slot. They share the key idea: <b>open the pick boxes last</b> and choose what the drops didn't give you. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=543" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 9:03 (caption-based, may be ~30 s off)">V2 <i>9:03-9:30</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></div>
+
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card">
+      <h3>Gear Change Vouchers</h3>
+      <ul class="clean">
+        <li><b>2 Urugugu vouchers + 1.5M Kina</b>: turn an off-class Aulamus weapon into your staff (item level 70). <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></li>
+        <li><b>2 Vakron vouchers + 1.5M</b>: Vakron Guard. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></li>
+        <li><b>3 Horn Den vouchers + 2M</b>: Nuakum Guard. <a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Cap calculator <span class="derived">math</span></h3>
+      <div class="calc">
+        <label>Current Odyle <input type="number" id="ody" min="0" max="840" value="200"></label>
+        <label><input type="checkbox" id="mem"> Membership (840 cap)</label>
+      </div>
+      <p style="margin:.8rem 0 0">Hits the cap in <output id="ocap">–</output>. Claims available now: <output id="oclaims">–</output>.</p>
+      <p class="muted" style="font-size:.85rem;margin:.4rem 0 0">Assumes +15 every 3 h and 40 per claim <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a>. Doesn't include the coupon.</p>
+    </div>
+  </div>
+</section>
+
+<section id="routine">
+  <h2><span class="num">04</span> Daily & weekly routine</h2>
+  <p class="muted"><b>Mindset:</b> pick one goal at a time. Don't try to do everything every day. <a class="sc vid" href="https://youtu.be/vBpC7bW7DGs?t=271" target="_blank" rel="noopener" title="FRESHY: You Hit Level 45… Now What? at 4:31 (caption-based, may be ~30 s off)">V4 <i>4:31-6:02</i></a> · <b>Alts:</b> focus on your main first. <a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1vtfyqe/" target="_blank" rel="noopener" title="r/Aion2: Rush main or alts">R2</a> Checkboxes are saved in this browser.</p>
+  <div class="grid g2">
+    <div class="card">
+      <div class="ckhead"><h3>☀️ Daily</h3><div class="prog"><span class="bar"><i></i></span><span class="cnt"></span><button class="reset" type="button" data-reset="daily">New day</button></div></div>
+      <p class="muted" style="font-size:.85rem;margin-top:-4px">Based on <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://www.gametruth.com/guides/aion-2-daily-weekly-checklist/" target="_blank" rel="noopener" title="gametruth daily/weekly checklist">W8</a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=903" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 15:03 (caption-based, may be ~30 s off)">V5 <i>15:03-21:00</i></a>. Daily Duties reset at 9 AM.</p>
+      <ul class="check" data-list="daily"><li><label><input type="checkbox" data-k="daily-0"><span class="box"></span><span class="txt">Attendance: claim both rewards. <a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=241" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 4:01 (caption-based, may be ~30 s off)">V5 <i>4:01</i></a></span></label></li><li><label><input type="checkbox" data-k="daily-1"><span class="box"></span><span class="txt">5 Daily Duties (reset 9 AM). Pick the <b>pet crystal</b> reward. <a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1203" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 20:03 (caption-based, may be ~30 s off)">V5 <i>20:03</i></a><a class="sc web low" href="https://www.mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html" target="_blank" rel="noopener" title="mmoexp daily/weekly (low weight)">W9</a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a></span></label></li><li><label><input type="checkbox" data-k="daily-2"><span class="box"></span><span class="txt">Nightmare: 2 attempts (they cap at 14, so don't let them sit). <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=510" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 8:30 (caption-based, may be ~30 s off)">V1 <i>8:30</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></span></label></li><li><label><input type="checkbox" data-k="daily-3"><span class="box"></span><span class="txt">Shugo Festival (opens hourly, 3 keys a day) <i>or</i> a Rift / PvE invasion. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=421" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 7:01 (caption-based, may be ~30 s off)">V2 <i>7:01</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1590" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 26:30 (caption-based, may be ~30 s off)">V5 <i>26:30-27:03</i></a></span></label></li><li><label><input type="checkbox" data-k="daily-4"><span class="box"></span><span class="txt">Check Odyle. Spend only if it's close to the cap. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web low" href="https://www.mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html" target="_blank" rel="noopener" title="mmoexp daily/weekly (low weight)">W9</a></span></label></li><li><label><input type="checkbox" data-k="daily-5"><span class="box"></span><span class="txt">Field Kinah: farm up to the daily cap (about 1M). <a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=932" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 15:32 (caption-based, may be ~30 s off)">V5 <i>15:32</i></a></span></label></li><li><label><input type="checkbox" data-k="daily-6"><span class="box"></span><span class="txt">Supply quests (enhance stones and AP). <a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=991" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 16:31 (caption-based, may be ~30 s off)">V5 <i>16:31-17:30</i></a></span></label></li></ul>
+      <div class="stamp" data-stamp="daily"></div>
+    </div>
+    <div class="card">
+      <div class="ckhead"><h3>📅 Weekly</h3><div class="prog"><span class="bar"><i></i></span><span class="cnt"></span><button class="reset" type="button" data-reset="weekly">Reset week</button></div></div>
+      <p class="muted" style="font-size:.85rem;margin-top:-4px">Based on <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://www.gametruth.com/guides/aion-2-daily-weekly-checklist/" target="_blank" rel="noopener" title="gametruth daily/weekly checklist">W8</a><a class="sc web low" href="https://www.mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html" target="_blank" rel="noopener" title="mmoexp daily/weekly (low weight)">W9</a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a>. Save score-based content for the end of the week.</p>
+      <ul class="check" data-list="weekly"><li><label><input type="checkbox" data-k="weekly-0"><span class="box"></span><span class="txt"><b>Ascension Trial ×3</b>, late in the week at your highest GS. V1 waited for 1.5k GS before normal mode. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener" title="Aion 2 Companion: dungeons &amp; raids">W4</a><a class="sc web" href="https://www.gametruth.com/guides/aion-2-daily-weekly-checklist/" target="_blank" rel="noopener" title="gametruth daily/weekly checklist">W8</a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=571" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 9:31 (caption-based, may be ~30 s off)">V1 <i>9:31-10:31</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1500" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at ~25:00 (caption-based, may be ~30 s off)">V5 <i>~25:00</i></a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a></span></label></li><li><label><input type="checkbox" data-k="weekly-1"><span class="box"></span><span class="txt"><b>Daily dungeon: 14 entries</b> (score-based, up to 10,000 stones), also late in the week. <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=363" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 6:03 (caption-based, may be ~30 s off)">V2 <i>6:03</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1531" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 25:31 (caption-based, may be ~30 s off)">V5 <i>25:31</i></a></span></label></li><li><label><input type="checkbox" data-k="weekly-2"><span class="box"></span><span class="txt"><b>Commander / Merchant scroll quests</b> on the world map and in the Abyss, up to 20 a week (AP, stigma shards, Daevanion fragments). <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=784" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 13:04 (caption-based, may be ~30 s off)">V1 <i>13:04-15:32</i></a></span></label></li><li><label><input type="checkbox" data-k="weekly-3"><span class="box"></span><span class="txt"><b>Seasonal missions.</b> <a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1562" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 26:02 (caption-based, may be ~30 s off)">V5 <i>26:02</i></a></span></label></li><li><label><input type="checkbox" data-k="weekly-4"><span class="box"></span><span class="txt"><b>Ludra</b>: 1 rewarded kill a week, 40 Odyle. <span class="tag skip">Disabled on global for now</span> <a class="sc web" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener" title="Aion 2 Companion: dungeons &amp; raids">W4</a><a class="sc web" href="https://aion2atlas.wiki/wiki/global-sanctuary-status/" target="_blank" rel="noopener" title="AION 2 Atlas: global Ludra status">W3</a></span></label></li></ul>
+      <div class="stamp" data-stamp="weekly"></div>
+    </div>
+  </div>
+  <div class="callout"><b>Timed events:</b> Spacetime Rift every 3 h (1 h inside) <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=303" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 5:03 (caption-based, may be ~30 s off)">V2 <i>5:03</i></a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=481" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 8:01 (caption-based, may be ~30 s off)">V5 <i>8:01</i></a>. Shugo Festival hourly <a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=421" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 7:01 (caption-based, may be ~30 s off)">V2 <i>7:01</i></a>. Nightmare attempts cap at 14 <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=510" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 8:30 (caption-based, may be ~30 s off)">V1 <i>8:30</i></a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a>.</div>
+</section>
+
+<section id="gear">
+  <h2><span class="num">05</span> Gear path & crafting</h2>
+  <p class="muted">Two lanes, three tiers: item level 54 → 70 → 86, then 102 from Ludra and crafting. <a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></p>
+  <div class="card">
+    <div class="lanes">
+      <div class="lane"><div class="lname">🛡️ Armour + guard</div>
+        <div class="node"><span class="il">54</span><b>Draupnir Cave</b><small>1-star · 700/1000</small></div>
+        <div class="node"><span class="il">70</span><b>Vakron Sky Island</b><small>armour + guard · 1400</small></div>
+        <div class="node"><span class="il">86</span><b>Ferocious Horn Den</b><small>Nuakum · 2100</small></div></div>
+      <div class="lane"><div class="lname">⚔️ Weapon + accessories</div>
+        <div class="node"><span class="il">54</span><b>Krao Cave</b><small>1-star · 700/1000</small></div>
+        <div class="node"><span class="il">70</span><b>Urugugu Canyon</b><small>all-class weapons + Aulamus acc. · 1400</small></div>
+        <div class="node"><span class="il">86</span><b>Fire Temple</b><small>Kromede · 2100</small></div></div>
+    </div>
+    <p class="muted" style="margin:14px 0 0;font-size:.9rem">Then: <b>Ludra</b> item level 102 weapons (2800, currently disabled) and <b>crafting</b> toward 94 and 102. <a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=452" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 7:32 (caption-based, may be ~30 s off)">V3 <i>7:32</i></a><a class="sc web" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener" title="Aion 2 Companion: dungeons &amp; raids">W4</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=691" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:31 (caption-based, may be ~30 s off)">V3 <i>11:31-13:01</i></a></p>
+  </div>
+
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card">
+      <h3>🔨 Crafting</h3>
+      <ul class="clean">
+        <li>Crafting is the long-term route to <b>94 and 102</b> and the best gear. <b>Save your crafting materials.</b> <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=691" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:31 (caption-based, may be ~30 s off)">V3 <i>11:31-13:01</i></a></li>
+        <li>Suggested order: <b>necklace → ring → weapon</b>. Crafted gear is the only gear worth taking to +20 and min-maxing. <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=691" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:31 (caption-based, may be ~30 s off)">V3 <i>11:31-13:01</i></a></li>
+        <li>Professions: level <b>Alchemy</b> first (potions). Don't level weapon/armour crafting early, because the endgame materials are rare. <a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=1831" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 30:31 (caption-based, may be ~30 s off)">V5 <i>30:31-32:30</i></a></li>
+        <li>Urugugu <b>Aulamus accessories (item level 70)</b> beat the early crafted True/Star Dragon Lord pieces (item level 62). <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>⬆️ Enhancing past +10 <a class="sc web" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener" title="MetaRoad: what to upgrade first">W6</a></h3>
+      <div class="odds"><div style="height:65%"><span>65%</span></div><div style="height:50%"><span>50%</span></div><div style="height:35%"><span>35%</span></div><div style="height:25%"><span>25%</span></div><div style="height:20%"><span>20%</span></div></div>
+      <div class="oddsl"><span>1st step</span><span>2nd</span><span>3rd</span><span>4th</span><span>5th</span></div>
+      <ul class="clean" style="margin-top:12px">
+        <li>Push past +10 only on <b>Unique keepers</b>. <a class="sc web" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener" title="MetaRoad: what to upgrade first">W6</a></li>
+        <li>Concentrate Amplify: <b>weapon → guard → chest</b>. Transfers are limited per season. <a class="sc web" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener" title="MetaRoad: what to upgrade first">W6</a></li>
+        <li>Amplify needs <b>+15 on a Unique</b> <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a>. At 2100+ you need +15 to +20 using Amplify Stones. <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=691" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:31 (caption-based, may be ~30 s off)">V3 <i>11:31</i></a></li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin-top:22px">Dungeons in order</h3>
+  <div class="tbl-wrap"><table class="stack">
+    <thead><tr><th>GS</th><th>Dungeon</th><th>Drops</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td class="skill">700 / 1000</td><td data-l="Dungeon">Draupnir Cave, Krao Cave (1-star, item level 54)</td><td data-l="Drops">Draupnir: armour. Krao: weapons/accessories</td><td data-l="Source"><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=720" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 12:00 (caption-based, may be ~30 s off)">V1 <i>12:00</i></a></td></tr>
+      <tr class="hl"><td class="skill">1400</td><td data-l="Dungeon">Vakron Sky Island (item level 70)</td><td data-l="Drops">Armour + guard</td><td data-l="Source"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></td></tr>
+      <tr class="hl"><td class="skill">1400</td><td data-l="Dungeon">Urugugu Canyon (item level 70)</td><td data-l="Drops">Weapons (all classes) + Aulamus accessories</td><td data-l="Source"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=452" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 7:32 (caption-based, may be ~30 s off)">V3 <i>7:32</i></a></td></tr>
+      <tr><td class="skill">1600 / 1900</td><td data-l="Dungeon">Transcendence S1/S2: Deus Research Base, Shattered Arkanis</td><td data-l="Drops">Arcana (see below)</td><td data-l="Source"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=480" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 8:00 (caption-based, may be ~30 s off)">V3 <i>8:00-9:32</i></a></td></tr>
+      <tr class="hl"><td class="skill">2100</td><td data-l="Dungeon">Ferocious Horn Den (item level 86)</td><td data-l="Drops">Armour + guard (Nuakum)</td><td data-l="Source"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=635" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 10:35 (caption-based, may be ~30 s off)">V3 <i>10:35</i></a></td></tr>
+      <tr class="hl"><td class="skill">2100</td><td data-l="Dungeon">Fire Temple (item level 86)</td><td data-l="Drops">Weapon + accessories (Kromede)</td><td data-l="Source"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=662" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:02 (caption-based, may be ~30 s off)">V3 <i>11:02</i></a></td></tr>
+      <tr><td class="skill">2200 / 2500</td><td data-l="Dungeon">Transcendence S3/S4</td><td data-l="Drops">Unique cards</td><td data-l="Source"><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=662" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:02 (caption-based, may be ~30 s off)">V3 <i>11:02</i></a></td></tr>
+      <tr><td class="skill">2800</td><td data-l="Dungeon">Ludra (10 players, 2×5) <span class="tag skip">disabled</span></td><td data-l="Drops">Item level 102 weapons. 1 rewarded kill a week, 40 Odyle</td><td data-l="Source"><a class="sc web" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener" title="Aion 2 Companion: dungeons &amp; raids">W4</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><b>Combat Power levers</b> beyond GS: stigmas, Soul Binding rerolls (e.g. combat speed over crit), weapon skin collection. <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=812" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 13:32 (caption-based, may be ~30 s off)">V3 <i>13:32-14:03</i></a></div>
+</section>
+
+<section id="arcana">
+  <h2><span class="num">06</span> Arcana for Chanter</h2>
+  <p class="muted">Arcana cards come from Transcendence (1600+). Deus Research Base drops Chalice, Bell and Compass. Shattered Arkanis drops Chalice, Mirror and Parchment. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=480" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 8:00 (caption-based, may be ~30 s off)">V3 <i>8:00-9:32</i></a></p>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Card GS</h3>
+      <div class="tbl-wrap" style="margin:6px 0 10px"><table style="min-width:0">
+        <thead><tr><th>Rarity</th><th>GS</th></tr></thead>
+        <tbody><tr><td>Common</td><td>20</td></tr><tr><td>Rare</td><td>40</td></tr><tr><td>Epic</td><td>60</td></tr><tr><td>Unique</td><td>80</td></tr></tbody>
+      </table></div>
+      <p style="font-size:.92rem">+1 per card level <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a>. V3: green cards are +40 each, so 5 cards = +200 (that's how you go 1600 → 1800). Blue is +20 more each. This matches W1's Rare/Epic values. <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=512" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 8:32 (caption-based, may be ~30 s off)">V3 <i>8:32-9:32</i></a></p>
+      <ul class="clean">
+        <li><b>Craft (Transmute) the Chalice first.</b> It rolls all 22 skills. <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></li>
+        <li>Season crystals can be crafted into a gold card. <a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=1115" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 18:35 (caption-based, may be ~30 s off)">V1 <i>18:35</i></a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Chanter set <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></h3>
+      <p style="font-size:.92rem"><b>Option A:</b> 3 Primal Vigor cards (Chalice, Parchment, Compass) + Bell + Mirror from Magic Armor.<br><b>Option B:</b> 4 Primal Vigor for <b>+150 PvE Attack</b>.</p>
+      <div class="tbl-wrap" style="margin:6px 0 0"><table style="min-width:0">
+        <thead><tr><th>Card</th><th>Roll for</th></tr></thead>
+        <tbody>
+          <tr><td><b>Chalice</b></td><td>Whichever key skill is short of 20</td></tr>
+          <tr><td><b>Parchment</b></td><td>Dark Crush / Onslaught / Spinning Strike</td></tr>
+          <tr><td><b>Compass</b></td><td>Incandescent Blow / Recuperation</td></tr>
+          <tr><td><b>Bell</b></td><td>Attack Preparation</td></tr>
+          <tr><td><b>Mirror</b></td><td>Impact Hit / Wind's Promise</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="callout warn"><b>Don't overspend.</b> Season 2 replaces the cards. <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></div>
+</section>
+
+<section id="build">
+  <h2><span class="num">07</span> Chanter endgame build changes</h2>
+  <p class="muted">This builds on the <a href="chanter-build.html">earlier Chanter PvE Build Guide</a>. The new research (mostly <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a>, a global S1 Chanter guide) mainly adds <b>where the skill levels come from</b> and some global-specific stigma and gear choices. No video source in this round was Chanter-specific.</p>
+
+  <div class="card">
+    <h3>Skill level targets <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></h3>
+    <div class="tbl-wrap"><table class="stack">
+      <thead><tr><th>Skill</th><th>Target</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td class="skill">Dark Crush</td><td data-l="Target"><span class="lv">16</span> → <span class="lv max">20</span></td><td data-l="Why">16 removes its cooldown. 20 adds a guaranteed crit.</td></tr>
+        <tr class="hl"><td class="skill">Onslaught</td><td data-l="Target"><span class="lv">16</span> → <span class="lv max">20</span></td><td data-l="Why">Core skill alongside Dark Crush.</td></tr>
+        <tr class="hl"><td class="skill">Spinning Strike</td><td data-l="Target"><span class="lv">16</span> → <span class="lv max">20</span></td><td data-l="Why">Core skill alongside Dark Crush.</td></tr>
+        <tr><td class="skill">Incandescent Blow, Defiance</td><td data-l="Target"><span class="lv">16</span></td><td data-l="Why">Secondary.</td></tr>
+        <tr><td class="skill">Everything else</td><td data-l="Target"><span class="lv">12</span></td><td data-l="Why">Good enough.</td></tr>
+      </tbody>
+    </table></div>
+    <p style="font-size:.92rem"><b>Where the levels come from:</b> 10 (skill points) + 4 (Daevanion blue nodes) + 2 (rings) + Arcana. Level 20 is hard to reach in Season 1. <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></p>
+  </div>
+
+  <h3 style="margin-top:22px">What changes from the earlier guide</h3>
+  <div class="cmp"><div class="was"><span class="hd">Earlier guide</span>The Lv16 <b>no-cooldown Dark Crush</b> spec is the big spike. Endgame (Antochi) pushes the core skills to Lv20. <a href="chanter-build.html#endgame">#endgame</a></div>
+    <div class="now"><span class="hd">Now</span>Same idea, confirmed. 16 removes the cooldown, and 20 also adds a guaranteed crit. You'll need Daevanion, rings and Arcana to get there. <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></div></div>
+  <div class="cmp"><div class="was"><span class="hd">Earlier guide</span>Sprint + Undefeated Mantra are mandatory. Antochi <b>drops Marchutan's Wrath</b> at endgame. <a href="chanter-build.html#endgame">#endgame</a></div>
+    <div class="now"><span class="hd">Now (4 slots on global)</span>Undefeated Mantra <b>20</b>, Power of the Storm <b>5→20</b>, Marchutan's Wrath <b>1</b>, Focused Defense <b>5</b> (Grobs uses Sprint Mantra instead). <b>Obliterate</b> for stagger checks. <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></div></div>
+  <div class="cmp"><div class="was"><span class="hd">Earlier guide</span>Top passives: Wind's Promise and Attack Preparation, plus Impact Hit. <a href="chanter-build.html#disagree">#disagree</a></div>
+    <div class="now"><span class="hd">Now</span>Attack Preparation &gt; Inspiring Spell &gt; Wind's Promise &gt; Impact Hit. <b>Protection Circle maxed.</b> <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></div></div>
+  <div class="cmp"><div class="was"><span class="hd">Earlier guide</span>Didn't give a stat or gear priority.</div>
+    <div class="now"><span class="hd">Now</span>Skill lines <b>only on rings</b>, damage lines on weapon and guard. Manastones: Attack / Crit / Accuracy <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a>. Accuracy first, crit cap 50% on global, CDR cap 60% <a class="sc ear" href="chanter-build.html" title="Carried over from earlier research / the earlier Chanter guide">earlier research</a><a class="sc web" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener" title="MetaRoad: what to upgrade first">W6</a>.</div></div>
+  <div class="cmp"><div class="was"><span class="hd">Earlier guide</span>Macro column and hold-both-buttons rotation. <a href="chanter-build.html#macro">#macro</a></div>
+    <div class="now"><span class="hd">Now</span>This research didn't cover the macro, so keep it as it is.</div></div>
+
+  <div class="grid g2" style="margin-top:16px">
+    <div class="card">
+      <h3>Daevanion for Chanter</h3>
+      <ul class="clean">
+        <li>1 GS per crystal spent. Blue nodes give <b>+1 skill level</b> (skills go 10 → 14). <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=61" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 1:01 (caption-based, may be ~30 s off)">V2 <i>1:01</i></a><a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></li>
+        <li>Blue nodes for <b>Dark Crush, Onslaught, Spinning Strike, Incandescent Blow</b> first, then orange. <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a></li>
+        <li>Global has <b>no Ariel board</b>. Azphel (Lv45) is PvP only, so for PvE fill the <b>first four boards</b>. Azphel crystals come from Abyss feathers. <a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Chanter's role in Ludra</h3>
+      <p>Support role. Ideally one per party for the damage-resistance buffs. In one source, the Chanter was the Rahu party's only healer (low confidence). <a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a></p>
+      <p class="muted" style="font-size:.9rem">This matters once Ludra returns to global. <a class="sc web" href="https://aion2atlas.wiki/wiki/global-sanctuary-status/" target="_blank" rel="noopener" title="AION 2 Atlas: global Ludra status">W3</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="disagree">
+  <h2><span class="num">08</span> Where sources disagree</h2>
+  <p class="muted">Most splits come from <b>pre-global vs global data</b>. When in doubt, W1 (global client data) wins.</p>
+  <div class="tbl-wrap"><table class="vs stack">
+    <thead><tr><th>Topic</th><th>Side A</th><th>Side B</th><th>Recommended</th></tr></thead>
+    <tbody><tr><td class="skill">Vakron / Urugugu GS gate</td><td data-l="Side A"><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=693" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 11:33 (caption-based, may be ~30 s off)">V1 <i>11:33</i></a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=754" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 12:34 (caption-based, may be ~30 s off)">V1 <i>12:34</i></a> <b>1600</b> for both (pre-global). <a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=424" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 7:04 (caption-based, may be ~30 s off)">V3 <i>7:04</i></a> does Vakron Exploration only "at 1600".</td><td data-l="Side B"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=1" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 0:01 (caption-based, may be ~30 s off)">V2 <i>0:01</i></a> <b>1400</b> for both, from global client data.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>1400.</b> W1 uses global client data and V2 is a global video. V1 was recorded on TW/KR before launch.</td></tr><tr><td class="skill">Draupnir Exploration pity</td><td data-l="Side A"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=183" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 3:03 (caption-based, may be ~30 s off)">V3 <i>3:03</i></a><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=664" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 11:04 (caption-based, may be ~30 s off)">V1 <i>11:04-12:34</i></a> Loot Draupnir Exploration 3× for its one-time pity pick (item level 54 gold) to kick-start gear.</td><td data-l="Side B"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc vid" href="https://youtu.be/DDPc1Poja3g?t=271" target="_blank" rel="noopener" title="Drunge: Level 45, what to do NOW? (auto-translated) at 4:31 (caption-based, may be ~30 s off)">V5 <i>4:31</i></a><a class="sc red" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener" title="r/Aion2: Global release tips">R1</a> Skip 1-star dungeons. Save Odyle for Vakron/Urugugu.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>Skip it.</b> Vakron/Urugugu pay 300k vs 200k Kina per claim and drop item level 70 instead of 54 <a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a>. Three sources agree, including the data-backed one.</td></tr><tr><td class="skill">Pity order at 1400</td><td data-l="Side A"><a class="sc vid" href="https://youtu.be/OFA-92_9S6w?t=543" target="_blank" rel="noopener" title="Nova Gaming: What to Do FIRST at Level 45 at 9:03 (caption-based, may be ~30 s off)">V2 <i>9:03-9:30</i></a> Exploration ×3 first, then Conquest ×21, then open both boxes.</td><td data-l="Side B"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a> Conquest first, then use Exploration for the last empty armour slot.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>W1's order</b>, with the rule both share: open the pick boxes <i>last</i> and choose a slot your drops didn't fill.</td></tr><tr><td class="skill">Clash rune GS</td><td data-l="Side A"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=120" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 2:00 (caption-based, may be ~30 s off)">V3 <i>2:00</i></a> 60 GS each.</td><td data-l="Side B"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a> +40 GS each.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>40 (W1)</b>, because it cites client data. Either way you do the same thing: stop at +1.</td></tr><tr><td class="skill">How far to push the belt</td><td data-l="Side A"><a class="sc vid low" href="https://youtu.be/KajavQXlJNM?t=302" target="_blank" rel="noopener" title="aLuckyRO: What to Do After Level 45 (pre-global) at 5:02 (caption-based, may be ~30 s off)">V1 <i>5:02</i></a> All the way to gold.</td><td data-l="Side B"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a> Stop at Unique +0. +0→+10 is 2 GS per 1M Kina.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>Stop at Unique +0.</b> Spend that Kina on weapon/guard and sockets.</td></tr><tr><td class="skill">Gear stat lines</td><td data-l="Side A"><a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a> Skill lines only on rings, damage lines on weapon and guard. Manastones: Attack / Crit / Accuracy.</td><td data-l="Side B"><a class="sc web" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener" title="MetaRoad: what to upgrade first">W6</a> Rank boost lines first (Front/Back Attack DMG Boost).</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>W5</b> for a Chanter: it's class-specific and global S1. Many of W6's numbers are Korean. The earlier report found the same split.</td></tr><tr><td class="skill">4th stigma</td><td data-l="Side A"><a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a> Focused Defense 5.</td><td data-l="Side B"><a class="sc web" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener" title="couga54 Chanter guide (global S1)">W5</a> notes Grobs runs Sprint Mantra instead. The <a href="chanter-build.html#endgame">earlier guide</a> treated Sprint Mantra as mandatory.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>Toss-up.</b> Sprint Mantra if you already run it from the earlier guide. Try Focused Defense on harder bosses. No source has numbers either way.</td></tr><tr><td class="skill">Transcendence stage 3</td><td data-l="Side A"><a class="sc web" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener" title="Raid Relay GS guide (global client data)">W1</a><a class="sc web" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener" title="Aion 2 Maps progression path">W2</a> 2200 GS.</td><td data-l="Side B"><a class="sc vid" href="https://youtu.be/J8WVY3FxPQM?t=662" target="_blank" rel="noopener" title="SywoGG: UPDATED Gear Progression Guide for GLOBAL at 11:02 (caption-based, may be ~30 s off)">V3 <i>11:02</i></a> Somewhere in the 2100–2800 bracket.</td><td data-l="Recommended"><span class="pick">Pick</span><br><b>2200.</b> These don't really conflict. V3 is just less precise.</td></tr></tbody>
+  </table></div>
+</section>
+
+<section id="sources">
+  <h2><span class="num">09</span> Sources & confidence</h2>
+  <p class="muted">Timestamps come from caption chunks and can be up to ~30 s off. The links jump to the start of each chunk.</p>
+  <div class="grid g3"><div class="card src"><span><span class="sc vid">V1</span> <span class="conf low">Low weight</span></span>
+<a class="title" href="https://youtu.be/KajavQXlJNM" target="_blank" rel="noopener">aLuckyRO · "AION 2 New Player Guide: What to Do After Level 45"</a><small>21 Aug 2026 · 20:44</small><p class="note"><b>Predates global.</b> Recorded on a fresh TW/KR character, so its GS gates (1.6k for Vakron/Urugugu) don't match global. Still useful for the activity list.</p>
+<div class="tslist"><small class="muted">Jump to:</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=150" target="_blank" rel="noopener">2:30</a> <small>one-time content</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=272" target="_blank" rel="noopener">4:32</a> <small>belt/amulet</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=571" target="_blank" rel="noopener">9:31</a> <small>Ascension Trial</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=693" target="_blank" rel="noopener">11:33</a> <small>Vakron gate</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=784" target="_blank" rel="noopener">13:04</a> <small>Abyss & scrolls</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=1115" target="_blank" rel="noopener">18:35</a> <small>gold Arcana card</small> <a class="ts" href="https://youtu.be/KajavQXlJNM?t=1141" target="_blank" rel="noopener">19:01</a> <small>pets</small></div>
+<a href="https://youtu.be/KajavQXlJNM" target="_blank" rel="noopener">youtu.be/KajavQXlJNM ↗</a></div><div class="card src"><span><span class="sc vid">V2</span> <span class="conf high">High confidence</span></span>
+<a class="title" href="https://youtu.be/OFA-92_9S6w" target="_blank" rel="noopener">Nova Gaming · "AION 2: What to Do FIRST at Level 45"</a><small>6 Oct 2026 · 10:33</small><p class="note">Global. Step-by-step path to 1400.</p>
+<div class="tslist"><small class="muted">Jump to:</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=1" target="_blank" rel="noopener">0:01</a> <small>goal: 1400</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=90" target="_blank" rel="noopener">1:30</a> <small>MSQ 1000, +10</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=183" target="_blank" rel="noopener">3:03</a> <small>belt/amulet morph</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=270" target="_blank" rel="noopener">4:30</a> <small>clash runes</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=303" target="_blank" rel="noopener">5:03</a> <small>Spacetime Rift</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=421" target="_blank" rel="noopener">7:01</a> <small>Shugo Festival shop</small> <a class="ts" href="https://youtu.be/OFA-92_9S6w?t=543" target="_blank" rel="noopener">9:03</a> <small>pity order</small></div>
+<a href="https://youtu.be/OFA-92_9S6w" target="_blank" rel="noopener">youtu.be/OFA-92_9S6w ↗</a></div><div class="card src"><span><span class="sc vid">V3</span> <span class="conf high">High confidence</span></span>
+<a class="title" href="https://youtu.be/J8WVY3FxPQM" target="_blank" rel="noopener">SywoGG · "AION 2: UPDATED Gear Progression Guide for GLOBAL"</a><small>4 Oct 2026 · 14:50</small><p class="note">Global. GS milestones from 45 to 2800.</p>
+<div class="tslist"><small class="muted">Jump to:</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=63" target="_blank" rel="noopener">1:03</a> <small>~700 GS at 45</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=183" target="_blank" rel="noopener">3:03</a> <small>1000 / Draupnir</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=301" target="_blank" rel="noopener">5:01</a> <small>1400</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=480" target="_blank" rel="noopener">8:00</a> <small>1600 Arcana</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=572" target="_blank" rel="noopener">9:32</a> <small>1900</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=635" target="_blank" rel="noopener">10:35</a> <small>2100 / 2800</small> <a class="ts" href="https://youtu.be/J8WVY3FxPQM?t=691" target="_blank" rel="noopener">11:31</a> <small>crafting</small></div>
+<a href="https://youtu.be/J8WVY3FxPQM" target="_blank" rel="noopener">youtu.be/J8WVY3FxPQM ↗</a></div><div class="card src"><span><span class="sc vid">V4</span> <span class="conf med">Medium</span></span>
+<a class="title" href="https://youtu.be/vBpC7bW7DGs" target="_blank" rel="noopener">FRESHY · "You Hit Level 45 in AION 2… Now What?"</a><small>29 Sep 2026 · 8:23</small><p class="note">Mindset and priorities, few hard numbers.</p>
+<div class="tslist"><small class="muted">Jump to:</small> <a class="ts" href="https://youtu.be/vBpC7bW7DGs?t=150" target="_blank" rel="noopener">2:30</a> <small>GS is a key</small> <a class="ts" href="https://youtu.be/vBpC7bW7DGs?t=271" target="_blank" rel="noopener">4:31</a> <small>one goal at a time</small></div>
+<a href="https://youtu.be/vBpC7bW7DGs" target="_blank" rel="noopener">youtu.be/vBpC7bW7DGs ↗</a></div><div class="card src"><span><span class="sc vid">V5</span> <span class="conf med">Medium</span></span>
+<a class="title" href="https://youtu.be/DDPc1Poja3g" target="_blank" rel="noopener">Drunge · "AION 2: Level 45, what to do NOW? The COMPLETE Guide!"</a><small>2 Oct 2026 · 45:36</small><p class="note">English auto-translation of a French video, only skimmed by keyword. Timestamps are fine, but some nuance may be lost.</p>
+<div class="tslist"><small class="muted">Jump to:</small> <a class="ts" href="https://youtu.be/DDPc1Poja3g?t=241" target="_blank" rel="noopener">4:01</a> <small>attendance / 1400</small> <a class="ts" href="https://youtu.be/DDPc1Poja3g?t=903" target="_blank" rel="noopener">15:03</a> <small>dailies</small> <a class="ts" href="https://youtu.be/DDPc1Poja3g?t=1203" target="_blank" rel="noopener">20:03</a> <small>Daily Duties</small> <a class="ts" href="https://youtu.be/DDPc1Poja3g?t=1531" target="_blank" rel="noopener">25:31</a> <small>daily dungeon</small> <a class="ts" href="https://youtu.be/DDPc1Poja3g?t=1831" target="_blank" rel="noopener">30:31</a> <small>professions</small> <a class="ts" href="https://youtu.be/DDPc1Poja3g?t=1950" target="_blank" rel="noopener">32:30</a> <small>pets/Genus</small></div>
+<a href="https://youtu.be/DDPc1Poja3g" target="_blank" rel="noopener">youtu.be/DDPc1Poja3g ↗</a></div><div class="card src"><span><span class="sc web">W1</span> <span class="conf high">High confidence</span></span>
+<a class="title" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener">Raid Relay · GS guide 45→2100</a><small>8 Oct 2026</small><p class="note">Global client data, updated 8 Oct. The most detailed and data-backed source. Recommended pick in most disagreements.</p>
+<a class="url" href="https://raidrelay.com/aion-2-gear-score-guide" target="_blank" rel="noopener">raidrelay.com/aion-2-gear-score-guide ↗</a></div><div class="card src"><span><span class="sc web">W2</span> <span class="conf med">Medium</span></span>
+<a class="title" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener">Aion 2 Maps · progression path + <a href="https://aion2maps.com/guides/ludra/" target="_blank" rel="noopener">Ludra guide</a></a><small>Oct 2026</small><p class="note">Gate pairs, Horn Den pity, vouchers. The "Chanter as only healer" note is low confidence.</p>
+<a class="url" href="https://aion2maps.com/guides/progression-path/" target="_blank" rel="noopener">aion2maps.com/guides/progression-path ↗</a></div><div class="card src"><span><span class="sc web">W3</span> <span class="conf high">High confidence</span></span>
+<a class="title" href="https://aion2atlas.wiki/wiki/global-sanctuary-status/" target="_blank" rel="noopener">AION 2 Atlas · global Ludra status</a><small>9 Oct 2026</small><p class="note">Source for "Ludra pulled, announcement by 16 Oct".</p>
+<a class="url" href="https://aion2atlas.wiki/wiki/global-sanctuary-status/" target="_blank" rel="noopener">aion2atlas.wiki/wiki/global-sanctuary-status ↗</a></div><div class="card src"><span><span class="sc web">W4</span> <span class="conf med">Medium</span></span>
+<a class="title" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener">Aion 2 Companion · dungeons & raids</a><small>no date</small><p class="note">Ludra format, Ascension Trial.</p>
+<a class="url" href="https://aion2.grimvane.app/companion/wiki/dungeons-and-raids/" target="_blank" rel="noopener">aion2.grimvane.app/companion/wiki/dungeons-and-raids ↗</a></div><div class="card src"><span><span class="sc web">W5</span> <span class="conf high">High confidence</span></span>
+<a class="title" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener">couga54 · Chanter guide (global S1)</a><small>7 Oct 2026</small><p class="note">The only Chanter-specific source. Skills, stigmas, Arcana, Daevanion.</p>
+<a class="url" href="https://couga54.github.io/aion2-guides/en/chanter/" target="_blank" rel="noopener">couga54.github.io/aion2-guides/en/chanter ↗</a></div><div class="card src"><span><span class="sc web">W6</span> <span class="conf low">Low weight</span></span>
+<a class="title" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener">MetaRoad · "What to upgrade first"</a><small>28 Sep 2026</small><p class="note">Many of its numbers are Korean. Used for enhancement odds and the 60% CDR cap.</p>
+<a class="url" href="https://metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first" target="_blank" rel="noopener">metaroad.gg/aion2/progression/aion-2-what-to-upgrade-first ↗</a></div><div class="card src"><span><span class="sc web">W7</span> <span class="conf med">Medium</span></span>
+<a class="title" href="https://gamerblurb.com/guides/aion-2-what-to-do-after-level-45" target="_blank" rel="noopener">gamerblurb · after 45</a><small>no date</small><p class="note">Supports one-time content first and skipping 1-star dungeons.</p>
+<a class="url" href="https://gamerblurb.com/guides/aion-2-what-to-do-after-level-45" target="_blank" rel="noopener">gamerblurb.com/guides/aion-2-what-to-do-after-level-45 ↗</a></div><div class="card src"><span><span class="sc web">W8</span> <span class="conf med">Medium</span></span>
+<a class="title" href="https://www.gametruth.com/guides/aion-2-daily-weekly-checklist/" target="_blank" rel="noopener">gametruth · daily/weekly checklist</a><small>no date</small><p class="note">Routine lists.</p>
+<a class="url" href="https://www.gametruth.com/guides/aion-2-daily-weekly-checklist/" target="_blank" rel="noopener">gametruth.com/guides/aion-2-daily-weekly-checklist ↗</a></div><div class="card src"><span><span class="sc web">W9</span> <span class="conf low">Low weight</span></span>
+<a class="title" href="https://www.mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html" target="_blank" rel="noopener">mmoexp · daily/weekly</a><small>no date</small><p class="note"><b>Low weight:</b> it's a gold-selling site. Only used where other sources agree.</p>
+<a class="url" href="https://www.mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html" target="_blank" rel="noopener">mmoexp.com/News/aion-2-global-end-game-guide-daily-and-weekly-activities.html ↗</a></div><div class="card src"><span><span class="sc red">R1</span> <span class="conf low">Low weight</span></span>
+<a class="title" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener">r/Aion2 · "Aion 2 Global release Tips"</a><small>—</small><p class="note">Player comments, read from search snippets only.</p>
+<a class="url" href="https://www.reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips/" target="_blank" rel="noopener">reddit.com/r/Aion2/comments/1ttrdbf/aion_2_global_release_tips ↗</a></div><div class="card src"><span><span class="sc red">R2</span> <span class="conf low">Low weight</span></span>
+<a class="title" href="https://www.reddit.com/r/Aion2/comments/1vtfyqe/" target="_blank" rel="noopener">r/Aion2 · "Rush main or alts"</a><small>—</small><p class="note">Player comments, read from search snippets only.</p>
+<a class="url" href="https://www.reddit.com/r/Aion2/comments/1vtfyqe/" target="_blank" rel="noopener">reddit.com/r/Aion2/comments/1vtfyqe ↗</a></div></div>
+  <div class="callout warn" style="margin-top:18px"><b>Not covered in this research:</b> metabot.gg, expcarry, mmoherald and Korean Inven weren't fetched. Reddit was read only through search snippets. No source was a Chanter-specific post-45 video, so all the videos are class-agnostic.</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Compiled 10 Oct 2026 (SGT) from the sources above, five days after global launch (5 Oct 2026). Numbers are as each source gave them, and patches will change things. Checklist progress is stored only in this browser (localStorage). Companion guides: <a href="chanter-build.html">Chanter PvE Build</a> · <a href="gs-1700.html">GS guide</a>.</div>
+</footer>
+
+<script>
+(function(){
+  // Nav highlight
+  var links=[].slice.call(document.querySelectorAll('nav.top a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+      links.forEach(function(l){l.classList.remove('active')});var a=map[e.target.id];
+      if(a){a.classList.add('active');var nav=a.parentNode;nav.scrollTo({left:a.offsetLeft-nav.clientWidth/2+a.clientWidth/2,behavior:'smooth'});}}});},{rootMargin:'-40% 0px -55% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){obs.observe(s)});
+  }
+  // Checklists
+  var K='aion2-chanter-after45-v1',st={};
+  try{st=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
+  function save(){try{localStorage.setItem(K,JSON.stringify(st))}catch(e){}}
+  function fmt(t){var d=new Date(t);return d.toLocaleString([], {weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});}
+  function upd(list){
+    var ul=document.querySelector('ul.check[data-list="'+list+'"]');if(!ul)return;
+    var box=ul.closest('.card'),cb=ul.querySelectorAll('input'),n=0;
+    cb.forEach(function(c){if(c.checked)n++});
+    var p=box.querySelector('.prog');p.querySelector('.cnt').textContent=n+' / '+cb.length;
+    p.querySelector('.bar i').style.width=(100*n/cb.length)+'%';
+    var s=box.querySelector('[data-stamp="'+list+'"]');
+    if(s)s.textContent=st['_r_'+list]?('Last reset: '+fmt(st['_r_'+list])):'';
+  }
+  document.querySelectorAll('ul.check input').forEach(function(c){
+    var k=c.getAttribute('data-k');c.checked=!!st[k];
+    c.addEventListener('change',function(){if(c.checked)st[k]=1;else delete st[k];save();upd(k.split('-')[0]);});
+  });
+  document.querySelectorAll('button.reset').forEach(function(b){
+    b.addEventListener('click',function(){var l=b.getAttribute('data-reset');
+      if(!confirm('Clear all ticks in this list?'))return;
+      Object.keys(st).forEach(function(k){if(k.indexOf(l+'-')===0)delete st[k]});
+      st['_r_'+l]=Date.now();save();
+      document.querySelectorAll('ul.check[data-list="'+l+'"] input').forEach(function(c){c.checked=false});upd(l);});
+  });
+  ['to1400','daily','weekly'].forEach(upd);
+  // Coupon
+  var cd=document.getElementById('countdown');
+  var now=new Date(),today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var days=Math.round((new Date(2026,9,13)-today)/864e5); // calendar days to 13 Oct; exact cutoff hour not given
+  cd.textContent=days>1?'('+days+' days from today)':days===1?'(tomorrow!)':days===0?'(today is the last day!)':'(probably expired)';
+  document.getElementById('copyBtn').addEventListener('click',function(){
+    var t='TAKEFLIGHTAION2',b=this;
+    function ok(){b.textContent='Copied ✓';setTimeout(function(){b.textContent='Copy code'},1500)}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(ok,fb)}else fb();
+    function fb(){var r=document.createRange();r.selectNodeContents(document.getElementById('code'));var s=getSelection();s.removeAllRanges();s.addRange(r);try{document.execCommand('copy');ok()}catch(e){}}
+  });
+  // Odyle calc
+  var ody=document.getElementById('ody'),mem=document.getElementById('mem');
+  function calc(){var cap=mem.checked?840:560,v=Math.max(0,Math.min(cap,+ody.value||0));
+    var h=(cap-v)/15*3;document.getElementById('ocap').textContent=h<=0?'0 h (already capped)':(h>=24?(h/24).toFixed(1)+' days ('+Math.round(h)+' h)':Math.round(h)+' h');
+    document.getElementById('oclaims').textContent=Math.floor(v/40);}
+  ody.addEventListener('input',calc);mem.addEventListener('change',calc);calc();
+})();
+</script>
+</body>
+</html>

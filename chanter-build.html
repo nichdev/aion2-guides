@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aion 2 Chanter PvE Build Guide — Early Game to Endgame DPS</title>
+<style>
+:root{
+  --bg:#0b0d14; --bg2:#11141f; --card:#161a28; --card2:#1c2133; --line:#2a3048;
+  --text:#e7e9f2; --muted:#9aa1bb; --dim:#6d7491;
+  --gold:#f0c46b; --gold2:#c9953a; --teal:#4fd1c5; --violet:#a78bfa; --red:#f87171; --green:#6ee7a8; --blue:#60a5fa;
+  --r:14px; --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--text);
+  background:radial-gradient(1200px 600px at 80% -10%,rgba(167,139,250,.14),transparent 60%),
+             radial-gradient(900px 500px at -10% 10%,rgba(240,196,107,.10),transparent 60%),var(--bg);}
+a{color:var(--teal)} a:hover{color:#8ff0e6}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{line-height:1.25;margin:0 0 .5em}
+h2{font-size:1.65rem;display:flex;align-items:center;gap:.6rem}
+h2 .num{font-size:.8rem;font-weight:700;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;padding:.2rem .5rem}
+h3{font-size:1.15rem;color:var(--gold)}
+p{margin:.4em 0 .9em}
+small,.muted{color:var(--muted)}
+
+/* Hero */
+header.hero{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(240,196,107,.35);border-radius:999px;padding:.25rem .75rem;margin-bottom:14px}
+.hero h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(90deg,#fff,var(--gold) 60%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:760px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{font-size:.82rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.3rem .75rem;color:var(--muted);text-decoration:none}
+.chip b{color:var(--text)}
+
+/* Nav */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(11,13,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-top:10px;padding-bottom:10px}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:600;padding:.4rem .75rem;border-radius:8px}
+nav.top a:hover,nav.top a.active{color:var(--text);background:var(--card2)}
+nav.top a.brand{color:var(--gold)}
+
+section{padding:44px 0 8px}
+.card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+/* TL;DR */
+.tldr{border:1px solid rgba(240,196,107,.45);background:linear-gradient(135deg,rgba(240,196,107,.10),rgba(167,139,250,.06) 60%,var(--card))}
+.tldr h2{color:var(--gold)}
+.tldr ol{margin:0;padding-left:1.3rem}
+.tldr li{margin:.45rem 0}
+.tldr li b{color:#fff}
+
+/* Callouts */
+.callout{border-left:4px solid var(--teal);background:rgba(79,209,197,.07);border-radius:10px;padding:12px 16px;margin:14px 0}
+.callout.warn{border-color:var(--red);background:rgba(248,113,113,.07)}
+.callout.gold{border-color:var(--gold);background:rgba(240,196,107,.07)}
+.callout b:first-child{color:#fff}
+
+/* Badges */
+.lv{display:inline-block;font-weight:800;font-size:.8rem;padding:.12rem .5rem;border-radius:6px;background:rgba(240,196,107,.15);color:var(--gold);border:1px solid rgba(240,196,107,.4);white-space:nowrap}
+.lv.max{background:rgba(110,231,168,.13);color:var(--green);border-color:rgba(110,231,168,.4)}
+.spec{display:inline-grid;place-items:center;width:1.55rem;height:1.55rem;border-radius:50%;font-weight:800;font-size:.8rem;background:rgba(167,139,250,.18);color:#d7c9ff;border:1px solid rgba(167,139,250,.55);margin-right:3px}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;padding:.1rem .45rem;border-radius:5px;margin:1px 2px 1px 0;white-space:nowrap;border:1px solid}
+.v1{color:#93c5fd;border-color:rgba(96,165,250,.45);background:rgba(96,165,250,.1)}
+.v2{color:#fca5a5;border-color:rgba(248,113,113,.45);background:rgba(248,113,113,.1)}
+.v3{color:#86efac;border-color:rgba(110,231,168,.45);background:rgba(110,231,168,.1)}
+.core{color:var(--bg);background:var(--gold);border-color:var(--gold)}
+.skip{color:var(--red);border-color:rgba(248,113,113,.5);background:rgba(248,113,113,.08)}
+.opt{color:var(--muted);border-color:var(--line);background:var(--card2)}
+
+/* Tables */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:12px 0 18px}
+table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:640px}
+th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--card2);color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:rgba(255,255,255,.02)}
+td.skill{font-weight:700;color:#fff;white-space:nowrap}
+td.skill small{display:block;font-weight:500;color:var(--dim)}
+tr.hl td{background:rgba(240,196,107,.05)}
+
+/* Phase banner */
+.phase{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.phase .pill{font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;padding:.35rem .8rem;border-radius:8px}
+.pill.early{background:rgba(96,165,250,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.4)}
+.pill.end{background:rgba(248,113,113,.15);color:#fca5a5;border:1px solid rgba(248,113,113,.4)}
+
+/* Progress path */
+.path{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;margin-top:10px}
+.path .stop{position:relative;padding:18px 16px 16px;text-align:center}
+.path .stop:before{content:"";position:absolute;top:31px;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--gold),var(--red))}
+.path .stop:first-child:before{left:50%} .path .stop:last-child:before{right:50%}
+.path .dot{position:relative;z-index:1;width:30px;height:30px;margin:0 auto 10px;border-radius:50%;background:var(--bg);border:3px solid var(--gold);display:grid;place-items:center;font-weight:800;font-size:.8rem;color:var(--gold)}
+.path h4{margin:0 0 .3rem;color:#fff}
+.path p{font-size:.9rem;color:var(--muted);margin:0}
+
+/* Macro diagram */
+.macro-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.col-diagram{display:flex;flex-direction:column-reverse;gap:8px;margin:14px 0 8px}
+.slot{display:flex;align-items:center;gap:12px;border-radius:10px;padding:10px 12px;border:1px solid var(--line);background:var(--card2)}
+.slot .row{flex:0 0 auto;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;font-weight:700;color:var(--dim);width:48px}
+.slot .ico{flex:0 0 38px;height:38px;border-radius:9px;display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#0b0d14}
+.slot .nm{font-weight:700}
+.slot .nm small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
+.slot.r0{border-color:rgba(240,196,107,.6);background:linear-gradient(90deg,rgba(240,196,107,.16),var(--card2))}
+.i-dc{background:linear-gradient(135deg,#f0c46b,#c9953a)}
+.i-ss{background:linear-gradient(135deg,#4fd1c5,#2a9d92)}
+.i-ic{background:linear-gradient(135deg,#a78bfa,#7c5cd6)}
+.i-ib{background:linear-gradient(135deg,#f87171,#c24141)}
+.i-mw{background:linear-gradient(135deg,#60a5fa,#2f6fca)}
+.base{text-align:center;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);border-top:2px dashed var(--line);padding-top:6px}
+.arrow-up{text-align:center;font-size:.78rem;color:var(--muted)}
+.step2{margin-top:10px;border:1px dashed rgba(248,113,113,.55);border-radius:10px;padding:10px 12px;display:flex;gap:12px;align-items:center;background:rgba(248,113,113,.05)}
+
+/* Steps */
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+ol.steps>li{counter-increment:s;position:relative;padding:12px 14px 12px 58px;margin-bottom:10px;background:var(--card2);border:1px solid var(--line);border-radius:12px}
+ol.steps>li:before{content:counter(s);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2))}
+kbd{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.82rem;background:#0e111b;border:1px solid var(--line);border-bottom-width:3px;border-radius:6px;padding:.05rem .4rem;color:#fff;white-space:nowrap}
+
+/* Disagree */
+.vs td:nth-child(2),.vs td:nth-child(3){color:var(--muted)}
+.pick{display:inline-block;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--bg);background:var(--green);border-radius:5px;padding:.1rem .45rem;margin-bottom:4px}
+
+/* Details */
+details{background:var(--card2);border:1px solid var(--line);border-radius:12px;margin:10px 0;overflow:hidden}
+summary{cursor:pointer;list-style:none;padding:13px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:1.3rem;color:var(--gold);line-height:1}
+details[open] summary:after{content:"–"}
+details .inner{padding:0 16px 14px;color:var(--muted)}
+details .inner b{color:var(--text)}
+
+/* Sources */
+.src{display:flex;flex-direction:column;gap:6px}
+.src a.title{font-weight:700;text-decoration:none;color:#fff}
+.src a.title:hover{color:var(--teal)}
+footer{padding:40px 0 60px;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line);margin-top:40px}
+ul.clean{padding-left:1.1rem;margin:.3rem 0} ul.clean li{margin:.3rem 0}
+
+@media (max-width:860px){
+  .g3,.g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .macro-grid{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  body{font-size:15px}
+  .wrap{padding:0 14px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .card{padding:16px}
+  h2{font-size:1.35rem}
+  header.hero{padding:36px 0 20px}
+  .path{grid-template-columns:1fr}
+  .path .stop{text-align:left;padding:10px 0 10px 46px}
+  .path .stop:before{top:0;bottom:0;left:14px!important;right:auto!important;width:3px;height:auto;background:linear-gradient(180deg,var(--blue),var(--gold),var(--red))}
+  .path .stop:first-child:before{top:24px}.path .stop:last-child:before{bottom:calc(100% - 24px)}
+  .path .dot{position:absolute;left:0;top:10px;margin:0}
+  /* stack tables into cards on mobile */
+  table.stack{min-width:0}
+  table.stack thead{display:none}
+  table.stack tr{display:block;border-bottom:1px solid var(--line);padding:10px 12px}
+  table.stack tr:last-child{border-bottom:0}
+  table.stack td{display:block;border:0;padding:4px 0}
+  table.stack td[data-l]:before{content:attr(data-l);display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);font-weight:700}
+  table.stack td.skill{font-size:1.05rem;white-space:normal}
+}
+.lvs{display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.lvs .spec{margin-right:0}
+.macro-layout{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+@media (max-width:980px){.macro-layout{grid-template-columns:1fr}}
+@media (max-width:600px){
+  table.stack tr{display:grid;grid-template-columns:1fr 1fr;column-gap:14px}
+  table.stack td.skill,table.stack td:last-child{grid-column:1/-1}
+  table.stack tr.hl{background:rgba(240,196,107,.05)}
+  table.stack tr.hl td,table.stack tbody tr:hover td{background:transparent}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Aion 2 · Chanter · PvE</span>
+    <h1>Chanter PvE Build Guide</h1>
+    <p class="lead">A plain-English guide for players new to Chanter. It combines three creator guides into one progression path, starting with an early-game skill-point build and ending with the Korean-meta endgame DPS macro.</p>
+    <div class="chips">
+      <a class="chip" href="#sources"><span class="tag v1">V1</span> <b>aLuckyRO</b> · early game</a>
+      <a class="chip" href="#sources"><span class="tag v2">V2</span> <b>Antochi</b> · Korean endgame DPS</a>
+      <a class="chip" href="#sources"><span class="tag v3">V3</span> <b>Grobs</b> · early to mid game</a>
+    </div>
+  </div>
+</header>
+
+<nav class="top" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#tldr">⚡ Quick Start</a>
+    <a href="#basics">Basics</a>
+    <a href="#path">Progression</a>
+    <a href="#early">Early Build</a>
+    <a href="#endgame">Endgame Build</a>
+    <a href="#macro">Macro</a>
+    <a href="#rotation">Rotation</a>
+    <a href="#disagree">Disagreements</a>
+    <a href="#sources">Sources</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<!-- TL;DR -->
+<section id="tldr">
+  <div class="card tldr">
+    <h2>⚡ Quick Start / TL;DR</h2>
+    <ol>
+      <li><b>Dark Crush is your main damage skill.</b> Its <b>Piercing Strike</b> follow-up chain is where most of your damage comes from. Push it toward <span class="lv">Lv16</span>, which unlocks the <b>no-cooldown spec</b> and is the biggest power spike for the class.</li>
+      <li><b>Spinning Strike</b>: take the <b>-5s cooldown</b> spec as early as you can.</li>
+      <li><b>Stigmas you always run:</b> <b>Sprint Mantra</b> and <b>Undefeated Mantra</b>. All three guides agree.</li>
+      <li><b>Top passives:</b> <b>Wind's Promise</b> and <b>Attack Preparation</b>. Add <b>Impact Hit</b> as well, since 2 of the 3 guides take it.</li>
+      <li><b>Make one macro</b> that fires a quick-slot column: Dark Crush (bottom) → Spinning Strike → Impactful Crush → Incandescent Blow / Marchutan's Wrath (top).</li>
+      <li><b>Play it like this:</b> hold <kbd>Left Click</kbd> (Onslaught) and your macro key (<kbd>Right Click</kbd>) at the same time.</li>
+      <li><b>Early game:</b> keep some sustain (Recuperation, Defiance). <b>Endgame:</b> you aren't a real healer, so focus on DPS.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- Basics -->
+<section id="basics">
+  <h2><span class="num">01</span> How the Chanter does damage</h2>
+  <p class="muted">You only need four ideas before you look at the skill tables.</p>
+  <div class="grid g4">
+    <div class="card"><h3>🎯 The core</h3><p><b>Dark Crush</b> crits on hit and chains into <b>Piercing Strike</b>. All three guides build around this.</p></div>
+    <div class="card"><h3>🔓 The spike</h3><p>At <span class="lv">Lv16</span>, Dark Crush can take a spec that <b>removes its cooldown</b>. Antochi calls this crucial.</p></div>
+    <div class="card"><h3>🪟 The windows</h3><p><b>Spinning Strike</b> and <b>Impactful Crush</b> open windows that let Dark Crush fire over and over.</p></div>
+    <div class="card"><h3>📈 What to value</h3><p>None of the videos gives a stat or gear priority. They do suggest that <b>critical hit</b> and <b>cooldown reduction</b> matter.</p></div>
+  </div>
+  <div class="callout gold" style="margin-top:18px"><b>Reading the tables:</b> <span class="lv">Lv8</span> is the skill level a guide recommends. <span class="lv max">Lv11 max</span> means "max it at this stage." <span class="spec">3</span> is a spec slot number. <span class="tag v1">V1</span> <span class="tag v2">V2</span> <span class="tag v3">V3</span> show which video a recommendation comes from.</div>
+</section>
+
+<!-- Path -->
+<section id="path">
+  <h2><span class="num">02</span> Your progression path</h2>
+  <p class="muted">Most of the disagreements between the guides come from timing. Each guide is written for a different point in your Chanter's life.</p>
+  <div class="card">
+    <div class="path">
+      <div class="stop"><div class="dot">1</div><h4>Early game</h4><p>~230–250 skill points. Follow <span class="tag v1">V1</span>: Lv8 core skills, a few maxed, plenty of sustain.</p></div>
+      <div class="stop"><div class="dot">2</div><h4>Early → mid game</h4><p>Follow <span class="tag v3">V3</span>: reach Lv16 on Dark Crush and Onslaught, pick up Impact Hit, use the 2-step macro.</p></div>
+      <div class="stop"><div class="dot">3</div><h4>Endgame DPS</h4><p>Follow <span class="tag v2">V2</span>: Lv20 core skills, 1-step macro, drop Marchutan's Wrath, pure DPS.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EARLY -->
+<section id="early">
+  <div class="phase"><span class="pill early">Phase 1–2</span><h2 style="margin:0"><span class="num">03</span> Early game build</h2></div>
+  <p class="muted">Based on <span class="tag v1">V1</span> aLuckyRO (around 230–250 skill points) and <span class="tag v3">V3</span> Grobs (early to mid game). If you have fewer points, follow the V1 column. Move toward the V3 column as your points grow.</p>
+
+  <h3>Active skills</h3>
+  <div class="tbl-wrap"><table class="stack">
+    <thead><tr><th>Skill</th><th>V1 · early</th><th>V3 · early–mid</th><th>What it does for you</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="skill">Dark Crush <small>core damage</small></td>
+        <td data-l="V1 · early"><span class="lv max">Lv11 max</span><br><small>Critical Hit on hit</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv16</span> <span class="spec">2</span><span class="spec">3</span><span class="spec">4</span></span></td>
+        <td data-l="Why">Crits on hit, adds the Piercing Strike chain, and (V3) <b>removes its cooldown</b>. <span class="tag core">CORE</span></td></tr>
+      <tr class="hl"><td class="skill">Onslaught <small>left-click filler</small></td>
+        <td data-l="V1 · early"><span class="lv">Lv8</span><br><small>+20% MP restored</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv16</span> <span class="spec">2</span><span class="spec">3</span><span class="spec">4</span></span></td>
+        <td data-l="Why">V3 specs: absorbs 0.7% HP, +50% multi-hit on hit, and −1s Spinning Strike cooldown on hit.</td></tr>
+      <tr class="hl"><td class="skill">Spinning Strike</td>
+        <td data-l="V1 · early"><span class="lv max">Lv11 max</span><br><small>−5s cooldown</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">1</span></span></td>
+        <td data-l="Why">−5s cooldown, recommended by both. It opens Dark Crush windows.</td></tr>
+      <tr><td class="skill">Impactful Crush</td>
+        <td data-l="V1 · early"><span class="lv">Lv8</span><br><small>may swap later</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv8</span> <span class="spec">1</span></span></td>
+        <td data-l="Why">Mobile (you can move while using it). Another window-opener in the macro column.</td></tr>
+      <tr><td class="skill">Incandescent Blow</td>
+        <td data-l="V1 · early"><span class="lv">Lv1</span><br><small>later −20% MP consumed or up to 12% more dmg (fewer targets)</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">3</span></span></td>
+        <td data-l="Why">Up to 12% more damage when it hits fewer targets, which suits single-target boss fights.</td></tr>
+      <tr><td class="skill">Gust Rampage <small>bosses</small></td>
+        <td data-l="V1 · early"><span class="lv">Lv8</span><br><small>Absorbs 5% HP or restores 120 MP</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv8</span> <span class="spec">1</span></span></td>
+        <td data-l="Why">Boss tool. Absorbs 5% HP (V3: on staggered bosses).</td></tr>
+      <tr><td class="skill">Rushing Smash <small>gap closer</small></td>
+        <td data-l="V1 · early"><span class="lv">Lv8</span><br><small>Changes to Charge Skill</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">4</span></span></td>
+        <td data-l="Why">V3 spec 4 resets its cooldown when you defeat an enemy. Also part of the opener.</td></tr>
+      <tr><td class="skill">Recuperation <small>heal</small></td>
+        <td data-l="V1 · early"><span class="lv max">Lv10 max</span><br><small>+1 consecutive use, Heal over Time</small></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">1</span><span class="spec">2</span><span class="spec">4</span></span></td>
+        <td data-l="Why">+1 consecutive use, removes up to 2 debuffs, +5% HP restored (V3).</td></tr>
+      <tr><td class="skill">Defiance</td>
+        <td data-l="V1 · early"><span class="lv">Lv8</span><br><small>Restores 10% HP on use</small></td>
+        <td data-l="V3 · early–mid"><span class="tag opt">not listed</span></td>
+        <td data-l="Why">Extra self-sustain while you're learning.</td></tr>
+      <tr><td class="skill">Heat Wave Blow</td>
+        <td data-l="V1 · early"><span class="lv">Lv8</span><br><small>+10% dmg when fewer targets</small></td>
+        <td data-l="V3 · early–mid"><span class="tag opt">not listed</span></td>
+        <td data-l="Why">Bonus damage on fewer targets.</td></tr>
+      <tr><td class="skill">Tremor Crush</td>
+        <td data-l="V1 · early"><span class="tag opt">not listed</span></td>
+        <td data-l="V3 · early–mid"><span class="lvs"><span class="lv">Lv8</span> <span class="spec">2</span></span></td>
+        <td data-l="Why">+10m range.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Passives</h3>
+  <div class="tbl-wrap"><table class="stack">
+    <thead><tr><th>Passive</th><th>V1</th><th>V3</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="skill">Attack Preparation</td><td data-l="V1"><span class="lv max">Lv12 max</span></td><td data-l="V3"><span class="lv">Lv3+</span></td><td data-l="Notes">Top passive in every guide. <span class="tag core">CORE</span></td></tr>
+      <tr class="hl"><td class="skill">Wind's Promise</td><td data-l="V1"><span class="lv max">Lv11 max</span></td><td data-l="V3"><span class="lv">Lv3+</span></td><td data-l="Notes">Top passive in every guide. <span class="tag core">CORE</span></td></tr>
+      <tr><td class="skill">Impact Hit</td><td data-l="V1"><span class="tag skip">SKIP (calls it PvP)</span></td><td data-l="V3"><span class="lv">Lv10+</span></td><td data-l="Notes">V3: +28% impact chance, +4.5% double chance. See <a href="#disagree">disagreements</a>.</td></tr>
+      <tr><td class="skill">Inspiring Spell</td><td data-l="V1"><span class="lv">Lv11</span></td><td data-l="V3"><span class="tag opt">not listed</span></td><td data-l="Notes">—</td></tr>
+      <tr><td class="skill">Blessing of Life</td><td data-l="V1"><span class="lv">Lv12</span></td><td data-l="V3"><span class="tag opt">not listed</span></td><td data-l="Notes">—</td></tr>
+      <tr><td class="skill">Raging Spell</td><td data-l="V1"><span class="lv">Lv11</span></td><td data-l="V3"><span class="tag opt">not listed</span></td><td data-l="Notes">Only if you run Gust Rampage.</td></tr>
+      <tr><td class="skill">Protection Circle</td><td data-l="V1"><span class="tag opt">not listed</span></td><td data-l="V3"><span class="lv">Lv1+</span></td><td data-l="Notes">Shields your party at 10 stacks.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Stigmas</h3>
+  <p class="muted">These are the stigmas the early guides discuss. Sprint and Undefeated Mantra are always on. Pick the rest to fit the situation. On global you have 4 stigma slots (per V2).</p>
+  <div class="tbl-wrap"><table class="stack">
+    <thead><tr><th>Stigma</th><th>V1</th><th>V3</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="skill">Undefeated Mantra</td><td data-l="V1"><span class="lv">Lv10+</span><br><small>all remaining points</small></td><td data-l="V3"><span class="tag v3">✓ take</span></td><td data-l="Why">Party damage. <span class="tag core">MANDATORY</span></td></tr>
+      <tr class="hl"><td class="skill">Sprint Mantra</td><td data-l="V1"><span class="lv">Lv5</span></td><td data-l="V3"><span class="tag v3">✓ take</span></td><td data-l="Why"><span class="tag core">MANDATORY</span></td></tr>
+      <tr><td class="skill">Power of the Storm</td><td data-l="V1"><span class="tag v1">✓ take</span></td><td data-l="V3"><span class="lv">Lv5</span><br><small>−30s cooldown</small></td><td data-l="Why">Party buffs. Also the first button of the opener.</td></tr>
+      <tr><td class="skill">Fracturing Blow</td><td data-l="V1"><span class="lv">Lv5</span><br><small>−15s cd</small></td><td data-l="V3"><span class="lv">Lv5</span><br><small>−15s cd</small></td><td data-l="Why">Both take it at Lv5 for the −15s cooldown.</td></tr>
+      <tr><td class="skill">Marchutan's Wrath</td><td data-l="V1"><span class="lv">Lv5</span></td><td data-l="V3"><span class="tag v3">✓ take</span></td><td data-l="Why">Ranged, and triggers the Dark Crush pop-up. Dropped at endgame (see V2).</td></tr>
+      <tr><td class="skill">Obliterate</td><td data-l="V1"><span class="lv">Lv1</span></td><td data-l="V3"><span class="tag opt">not listed</span></td><td data-l="Why">Boss stagger.</td></tr>
+      <tr><td class="skill">Guardian Blessing</td><td data-l="V1"><span class="tag v1">solo</span></td><td data-l="V3"><span class="tag opt">not listed</span></td><td data-l="Why">HP buff when you play solo.</td></tr>
+    </tbody>
+  </table></div>
+
+  <details>
+    <summary>🚫 Skills the early guides skip or deprioritize</summary>
+    <div class="inner">
+      <p><b>Impact Hit:</b> V1 calls it a PvP skill and skips it. V2 and V3 both take it, so pick it up once you have points (see <a href="#disagree">disagreements</a>).</p>
+      <p><b>Raging Spell:</b> only worth it if you run Gust Rampage (V1).</p>
+      <p><b>Impactful Crush:</b> V1 levels it to Lv8 but says you may swap it out later. The V2 and V3 macros both keep it in the column.</p>
+    </div>
+  </details>
+</section>
+
+<!-- ENDGAME -->
+<section id="endgame">
+  <div class="phase"><span class="pill end">Phase 3</span><h2 style="margin:0"><span class="num">04</span> Endgame DPS build</h2></div>
+  <p class="muted">Based on <span class="tag v2">V2</span> Antochi (Korean meta, endgame DPS), with <span class="tag v3">V3</span> Grobs' mid-game setup shown for comparison. Use V3 as your stepping stone into V2.</p>
+
+  <div class="callout warn"><b>Mindset shift:</b> at endgame, Antochi says <i>you are not a true healer</i>. Keep Recuperation for party healing, but spend everything else on damage.</div>
+
+  <h3>Active skills</h3>
+  <div class="tbl-wrap"><table class="stack">
+    <thead><tr><th>Skill</th><th>V2 · endgame</th><th>V3 · stepping stone</th><th>What the specs do</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td class="skill">Dark Crush <small>core damage</small></td>
+        <td data-l="V2 · endgame"><span class="lvs"><span class="lv">Lv20</span> <span class="spec">3</span><span class="spec">4</span><span class="spec">5</span></span></td>
+        <td data-l="V3"><span class="lvs"><span class="lv">Lv16</span> <span class="spec">2</span><span class="spec">3</span><span class="spec">4</span></span></td>
+        <td data-l="Specs">Crit on hit, Piercing Strike chain, and <b>removes the Dark Crush cooldown</b> (unlocked at Lv16, crucial). <span class="tag core">CORE</span></td></tr>
+      <tr class="hl"><td class="skill">Onslaught</td>
+        <td data-l="V2 · endgame"><span class="lvs"><span class="lv">Lv20</span> <span class="spec">3</span><span class="spec">4</span><span class="spec">5</span></span></td>
+        <td data-l="V3"><span class="lvs"><span class="lv">Lv16</span> <span class="spec">2</span><span class="spec">3</span><span class="spec">4</span></span></td>
+        <td data-l="Specs">Your held left-click skill. Keep it running the whole fight.</td></tr>
+      <tr class="hl"><td class="skill">Spinning Strike</td>
+        <td data-l="V2 · endgame"><span class="lvs"><span class="lv">Lv20</span> <span class="spec">1</span><span class="spec">3</span><span class="spec">5</span></span></td>
+        <td data-l="V3"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">1</span></span></td>
+        <td data-l="Specs">−5s cooldown, +20% damage on fewer targets, crit.</td></tr>
+      <tr><td class="skill">Incandescent Blow</td>
+        <td data-l="V2 · endgame"><span class="lvs"><span class="lv">Lv16</span> <span class="spec">3</span><span class="spec">5</span></span></td>
+        <td data-l="V3"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">3</span></span></td>
+        <td data-l="Specs">Moves into the top row of the macro column in V2.</td></tr>
+      <tr><td class="skill">Impactful Crush</td>
+        <td data-l="V2 · endgame"><span class="lvs"><span class="lv">Lv12–16</span> <span class="spec">3</span><span class="spec">4</span></span></td>
+        <td data-l="V3"><span class="lvs"><span class="lv">Lv8</span> <span class="spec">1</span></span></td>
+        <td data-l="Specs">Mobile, +30% skill speed.</td></tr>
+      <tr><td class="skill">Recuperation</td>
+        <td data-l="V2 · endgame"><span class="lv">Lv20</span></td>
+        <td data-l="V3"><span class="lvs"><span class="lv">Lv12</span> <span class="spec">1</span><span class="spec">2</span><span class="spec">4</span></span></td>
+        <td data-l="Specs">Party heal.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="grid g2">
+    <div class="card">
+      <h3>Passive priority <span class="tag v2">V2</span></h3>
+      <ol class="steps">
+        <li><b>Wind's Promise</b></li>
+        <li><b>Impact Hit</b> <small class="muted">(V3: Lv10+, +28% impact chance, +4.5% double chance)</small></li>
+        <li><b>Attack Preparation</b></li>
+        <li><b>Earth's Promise</b></li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>Stigmas: 4 slots on global <span class="tag v2">V2</span></h3>
+      <ul class="clean">
+        <li><b>Undefeated Mantra</b> <span class="tag core">FIXED</span></li>
+        <li><b>Sprint Mantra</b> <span class="tag core">FIXED</span></li>
+        <li><b>Power of the Storm</b> <span class="tag core">FIXED</span></li>
+        <li><b>Flex slot:</b> <b>Guardian Blessing</b> (multiplies Wind's Promise 1.5×) <i>or</i> <b>Impeding Authority</b> (if your party has no Cleric)</li>
+      </ul>
+      <div class="callout warn" style="margin-bottom:0"><b>Drop Marchutan's Wrath.</b> Antochi calls it "the first one Korean Chanters drop."</div>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO -->
+<section id="macro">
+  <h2><span class="num">05</span> The macro: setup and column diagram</h2>
+  <p class="muted">The macro presses a quick-slot <b>column</b> for you. In the diagrams below, <b>Row 0 is at the bottom</b>, the same way the column stacks in game, and Dark Crush always sits there.</p>
+
+  <div class="grid macro-layout">
+    <div class="card">
+      <h3>Step-by-step setup</h3>
+      <ol class="steps">
+        <li>Open <b>Settings → Key Settings → General → Macro</b>.</li>
+        <li>Put your skills in a quick-slot column in the order shown in the column diagram (Row 0 at the bottom).</li>
+        <li>Create a macro and set <b>Runs</b> to <b>"only while key is held."</b></li>
+        <li>Set <b>Delay</b> to <kbd>10 ms</kbd>.</li>
+        <li>Add <b>one step</b> that points to that quick-slot column (V2). If you use the V3 version, add a second step for Incandescent Blow.</li>
+        <li>Bind the macro to <kbd>Right Click</kbd>. Onslaught stays on <kbd>Left Click</kbd>.</li>
+      </ol>
+      <div class="callout"><b>Why only one step?</b> Antochi explains that every extra step makes each column fire less often. One step pointing to the column keeps Dark Crush firing as often as possible.</div>
+    </div>
+
+    <div class="card">
+      <h3>Column diagrams</h3>
+      <div class="macro-grid">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><b>Endgame</b><span class="tag v2">V2 · 1 step</span></div>
+          <div class="col-diagram">
+            <div class="slot r0"><span class="row">Row 0</span><span class="ico i-dc">DC</span><span class="nm">Dark Crush<small>core · fires most</small></span></div>
+            <div class="slot"><span class="row">Row 1</span><span class="ico i-ss">SS</span><span class="nm">Spinning Strike</span></div>
+            <div class="slot"><span class="row">Row 2</span><span class="ico i-ic">IC</span><span class="nm">Impactful Crush</span></div>
+            <div class="slot"><span class="row">Row 3</span><span class="ico i-ib">IB</span><span class="nm">Incandescent Blow</span></div>
+          </div>
+          <div class="base">▲ bottom of column</div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center"><b>Early–mid</b><span class="tag v3">V3 · 2 steps</span></div>
+          <div class="col-diagram">
+            <div class="slot r0"><span class="row">Row 0</span><span class="ico i-dc">DC</span><span class="nm">Dark Crush<small>core · fires most</small></span></div>
+            <div class="slot"><span class="row">Row 1</span><span class="ico i-ss">SS</span><span class="nm">Spinning Strike</span></div>
+            <div class="slot"><span class="row">Row 2</span><span class="ico i-ic">IC</span><span class="nm">Impactful Crush</span></div>
+            <div class="slot"><span class="row">Row 3</span><span class="ico i-mw">MW</span><span class="nm">Marchutan's Wrath</span></div>
+          </div>
+          <div class="base">▲ bottom of column · step 1</div>
+          <div class="step2"><span class="ico i-ib" style="width:38px;height:38px;border-radius:9px;display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#0b0d14">IB</span><span><b>Step 2:</b> Incandescent Blow, pressed directly</span></div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:14px;font-size:.9rem">Both columns are the same except Row 3. When you move to endgame, drop Marchutan's Wrath, move Incandescent Blow into Row 3, and delete step 2.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROTATION -->
+<section id="rotation">
+  <h2><span class="num">06</span> Rotation</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h3>Boss opener <span class="tag v3">V3</span></h3>
+      <ol class="steps">
+        <li>Cast <b>Power of the Storm</b> (party buffs).</li>
+        <li>Use <b>Rushing Smash</b> to close the gap to the boss.</li>
+        <li>Hold <kbd>Left Click</kbd> (Onslaught) and your <b>macro key</b> together.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h3>The loop <span class="tag v2">V2</span></h3>
+      <ol class="steps">
+        <li>Hold <kbd>Left Click</kbd> (Onslaught) and <kbd>Right Click</kbd> (macro) <b>at the same time</b>.</li>
+        <li>The macro fires <b>Spinning Strike</b> and <b>Impactful Crush</b> as they come up. They open windows for <b>Dark Crush</b>.</li>
+        <li>During those windows, <b>Dark Crush</b> and its <b>Piercing Strike</b> chain fire again and again. That's where your damage comes from.</li>
+        <li>Use <b>Recuperation</b> when the party needs healing, then go straight back to holding both buttons.</li>
+      </ol>
+    </div>
+  </div>
+  <details>
+    <summary>💡 Why holding both buttons works</summary>
+    <div class="inner">
+      <p>Onslaught on <kbd>Left Click</kbd> is your constant filler. In the V3 build, its specs also take −1s off Spinning Strike's cooldown on every hit. The macro on <kbd>Right Click</kbd> runs only while held, at a 10 ms delay, so it keeps trying the column every time a skill comes off cooldown. Dark Crush sits at Row 0, so it always gets priority. Once you have the Lv16 no-cooldown spec, it fires repeatedly during each window.</p>
+    </div>
+  </details>
+</section>
+
+<!-- DISAGREE -->
+<section id="disagree">
+  <h2><span class="num">07</span> Where the guides disagree</h2>
+  <p class="muted">Most of these disagreements come from progression stage. The early guides favor safety and flexibility, while the endgame guide squeezes out every bit of DPS. The <span class="pick">Pick</span> column gives the recommended choice for a new Chanter moving toward endgame.</p>
+  <div class="tbl-wrap"><table class="vs stack">
+    <thead><tr><th>Topic</th><th>Side A</th><th>Side B</th><th>Recommended</th></tr></thead>
+    <tbody>
+      <tr><td class="skill">Macro steps</td>
+        <td data-l="Side A"><span class="tag v3">V3</span> <b>2 steps</b>: column + Incandescent Blow directly</td>
+        <td data-l="Side B"><span class="tag v2">V2</span> <b>1 step</b>: extra steps make each column fire less</td>
+        <td data-l="Recommended"><span class="pick">Pick</span><br>Start with <b>V3's 2-step</b> while you still run Marchutan's Wrath. Switch to <b>V2's 1-step</b> at endgame.</td></tr>
+      <tr><td class="skill">Impact Hit</td>
+        <td data-l="Side A"><span class="tag v1">V1</span> <b>Skip</b>: a PvP skill</td>
+        <td data-l="Side B"><span class="tag v2">V2</span> <span class="tag v3">V3</span> <b>Take</b>: #2 passive in V2; Lv10+ in V3 (+28% impact, +4.5% double)</td>
+        <td data-l="Recommended"><span class="pick">Pick</span><br><b>Take it.</b> 2 of the 3 guides do, including the endgame one.</td></tr>
+      <tr><td class="skill">Marchutan's Wrath</td>
+        <td data-l="Side A"><span class="tag v1">V1</span> <span class="tag v3">V3</span> <b>Take</b>: ranged, triggers Dark Crush</td>
+        <td data-l="Side B"><span class="tag v2">V2</span> <b>Avoid</b>: "first one Korean Chanters drop"</td>
+        <td data-l="Recommended"><span class="pick">Pick</span><br>Use it <b>early</b>. At endgame, <b>swap it</b> for Guardian Blessing or Impeding Authority.</td></tr>
+      <tr><td class="skill">Healing focus</td>
+        <td data-l="Side A"><span class="tag v1">V1</span> <span class="tag v3">V3</span> <b>Invest in sustain</b>: Recuperation, Defiance, debuff removal</td>
+        <td data-l="Side B"><span class="tag v2">V2</span> <b>Pure DPS</b>: you are not a true healer</td>
+        <td data-l="Recommended"><span class="pick">Pick</span><br><b>Sustain while learning.</b> At endgame, focus on DPS and keep Recuperation as your party heal.</td></tr>
+    </tbody>
+  </table></div>
+
+  <details>
+    <summary>✅ What all three guides agree on</summary>
+    <div class="inner">
+      <ul class="clean">
+        <li><b>Dark Crush + Piercing Strike</b> is the core damage. The <b>Lv16 no-cooldown spec</b> is the big power spike.</li>
+        <li><b>Spinning Strike −5s cooldown</b>, taken early.</li>
+        <li><b>Sprint Mantra + Undefeated Mantra</b> are mandatory stigmas.</li>
+        <li><b>Attack Preparation</b> and <b>Wind's Promise</b> are the top passives.</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>❓ What about stats and gear?</summary>
+    <div class="inner"><p>None of the three videos gives a stat or gear priority, so this guide doesn't make one up. The builds lean on crit specs (Dark Crush, Spinning Strike) and cooldown-reduction specs (Spinning Strike, Fracturing Blow, Power of the Storm, the no-cooldown Dark Crush), which suggests <b>critical hit</b> and <b>cooldown reduction</b> are valuable.</p></div>
+  </details>
+</section>
+
+<!-- SOURCES -->
+<section id="sources">
+  <h2><span class="num">08</span> Sources</h2>
+  <div class="grid g3">
+    <div class="card src">
+      <span><span class="tag v1">V1</span> <small>Early game · ~230–250 skill points</small></span>
+      <a class="title" href="https://www.youtube.com/watch?v=bsLKvL6s9dc" target="_blank" rel="noopener">AION 2 Chanter PVE Build for Skills &amp; Stigmas</a>
+      <small>by aLuckyRO</small>
+      <a href="https://www.youtube.com/watch?v=bsLKvL6s9dc" target="_blank" rel="noopener">youtube.com/watch?v=bsLKvL6s9dc ↗</a>
+    </div>
+    <div class="card src">
+      <span><span class="tag v2">V2</span> <small>Korean meta · endgame DPS</small></span>
+      <a class="title" href="https://www.youtube.com/watch?v=m2U09MbGu-o" target="_blank" rel="noopener">Aion 2 Chanter PvE DPS Guide – Korean Macro Setup for Global</a>
+      <small>by Antochi</small>
+      <a href="https://www.youtube.com/watch?v=m2U09MbGu-o" target="_blank" rel="noopener">youtube.com/watch?v=m2U09MbGu-o ↗</a>
+    </div>
+    <div class="card src">
+      <span><span class="tag v3">V3</span> <small>Early to mid game</small></span>
+      <a class="title" href="https://youtu.be/2qTjfkuzdj4" target="_blank" rel="noopener">The Only Chanter PVE Guide You Need</a>
+      <small>by Grobs</small>
+      <a href="https://youtu.be/2qTjfkuzdj4" target="_blank" rel="noopener">youtu.be/2qTjfkuzdj4 ↗</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Compiled from the three videos above. Skill levels, specs, and effects are reported as each creator gave them. Game patches may change things, so check the source videos for the latest details.</div>
+</footer>
+
+<script>
+// Highlight the active section in the sticky nav (progressive enhancement; page works without JS)
+(function(){
+  var links=[].slice.call(document.querySelectorAll('nav.top a'));
+  var map={};links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a;});
+  if(!('IntersectionObserver' in window))return;
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(l){l.classList.remove('active')});
+        var a=map[e.target.id];if(a){a.classList.add('active');
+          var nav=a.parentNode;var x=a.offsetLeft-nav.clientWidth/2+a.clientWidth/2;nav.scrollTo({left:x,behavior:'smooth'});}
+      }
+    });
+  },{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('main section[id]').forEach(function(s){obs.observe(s)});
+})();
+</script>
+</body>
+</html>
