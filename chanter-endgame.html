@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aion 2 Chanter Endgame PvE Build (Global Season 1)</title>
+<meta name="description" content="One definitive Aion 2 Chanter endgame PvE build for global Season 1: skills, specs, passives, stigmas, Daevanion, macro, rotation, stats, gear and party role.">
+<style>
+:root{--bg:#0b0d14;--bg2:#11141f;--card:#161a28;--card2:#1c2133;--line:#2a3048;--text:#e7e9f2;--muted:#9aa1bb;--dim:#6d7491;--gold:#f0c46b;--gold2:#c9953a;--teal:#4fd1c5;--red:#f87171;--r:14px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px;background:var(--bg)}
+body{margin:0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text);
+background:radial-gradient(1200px 600px at 50% -200px,#1f2540,transparent 70%),radial-gradient(900px 500px at -10% 20%,rgba(79,209,197,.07),transparent 60%),var(--bg);background-repeat:no-repeat;min-height:100vh;overflow-x:hidden}
+a{color:var(--teal)}a:hover{color:#8ff0e6}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+h1,h2,h3{line-height:1.25;margin:0 0 .5em}
+h2{font-size:1.5rem;display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+h2 .num{font-size:.78rem;font-weight:800;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2));border-radius:8px;padding:.2rem .5rem}
+h3{font-size:1.05rem;color:var(--gold);margin-top:.2em}
+p{margin:.4em 0 .9em}.muted{color:var(--muted)}
+header.hero{padding:48px 0 26px;text-align:center}
+.eyebrow{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(79,209,197,.4);border-radius:999px;padding:.25rem .8rem;margin-bottom:14px}
+.hero h1{font-size:clamp(1.8rem,5.5vw,2.9rem);font-weight:800;letter-spacing:-.01em;background:linear-gradient(90deg,var(--gold),#fff3d0,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);max-width:640px;margin:8px auto 0}
+.back{display:inline-block;margin-bottom:10px;font-size:.9rem;text-decoration:none;color:var(--muted)}
+nav.top{position:sticky;top:0;z-index:50;background:rgba(11,13,20,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);border-top:1px solid var(--line)}
+nav.top .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;padding-top:8px;padding-bottom:8px}
+nav.top .wrap::-webkit-scrollbar{display:none}
+nav.top a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:.86rem;font-weight:600;padding:.35rem .65rem;border-radius:8px}
+nav.top a:hover{color:var(--text);background:var(--card2)}
+nav.top a.brand{color:var(--gold)}
+section{padding:38px 0 4px}
+.card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.summary{border:1px solid rgba(240,196,107,.5);background:linear-gradient(135deg,rgba(240,196,107,.11),rgba(79,209,197,.06) 60%,var(--card))}
+.summary h2{color:var(--gold)}
+.sum-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+.sum-item{border-left:3px solid var(--teal);padding:4px 0 4px 12px}
+.sum-item b{display:block;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+.lv{display:inline-block;font-weight:800;font-size:.8rem;padding:.1rem .5rem;border-radius:6px;background:rgba(240,196,107,.15);color:var(--gold);border:1px solid rgba(240,196,107,.45);white-space:nowrap}
+.lv.skip{background:rgba(248,113,113,.1);color:var(--red);border-color:rgba(248,113,113,.45)}
+.spec{display:inline-grid;place-items:center;width:1.6rem;height:1.6rem;border-radius:50%;font-weight:800;font-size:.8rem;background:rgba(79,209,197,.15);color:#a7f3ea;border:1px solid rgba(79,209,197,.55);margin:1px 3px 1px 0;vertical-align:middle}
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:.94rem}
+th,td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:var(--card2)}
+tr:last-child td{border-bottom:0}
+td.name{font-weight:700;white-space:nowrap}td.sp{white-space:nowrap}
+td .note{display:block;color:var(--muted);font-size:.85rem}
+ol.path{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:p}
+ol.path li{counter-increment:p;display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+ol.path li::before{content:counter(p) attr(data-sfx);flex:0 0 3.1rem;height:3.1rem;display:grid;place-items:center;border-radius:12px;font-weight:800;color:var(--bg);background:linear-gradient(135deg,var(--gold),var(--gold2))}
+ol.path li span{color:var(--muted);display:block;font-size:.88rem}
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0;padding:0;list-style:none}
+.chain li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-weight:600}
+.chain li small{display:block;color:var(--muted);font-weight:400}
+.chain li.arrow{background:none;border:0;padding:0;color:var(--gold);font-weight:800}
+.chain li.skipped{border-color:rgba(248,113,113,.45);color:var(--red)}
+.slot{text-align:center;position:relative;padding-top:26px}
+.slot .sn{position:absolute;top:10px;left:12px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.slot .ico{width:58px;height:58px;margin:4px auto 10px;border-radius:14px;display:grid;place-items:center;font-size:1.6rem;font-weight:800;color:var(--bg);background:linear-gradient(135deg,var(--teal),#2b8f86)}
+.slot.g .ico{background:linear-gradient(135deg,var(--gold),var(--gold2))}
+.slot h3{color:var(--text);margin-bottom:6px}
+.slot p{font-size:.88rem;color:var(--muted);margin:.3em 0 0}
+.steps{margin:0;padding-left:1.3rem}.steps li{margin:.5rem 0}.steps li b{color:#fff}
+.macro{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:22px;align-items:start}
+.col{display:flex;flex-direction:column-reverse;gap:6px;border:2px solid rgba(240,196,107,.5);border-radius:14px;padding:10px;background:var(--bg2)}
+.row{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-weight:700}
+.row i{font-style:normal;font-size:.7rem;color:var(--muted);font-weight:600;min-width:3.2rem}
+.row.first{border-color:var(--teal);box-shadow:0 0 0 1px rgba(79,209,197,.35) inset}
+.colcap{text-align:center;font-size:.8rem;color:var(--muted);margin-top:8px}
+.callout{border-left:4px solid var(--teal);background:rgba(79,209,197,.07);border-radius:10px;padding:12px 16px;margin:14px 0}
+.callout.warn{border-color:var(--red);background:rgba(248,113,113,.08)}
+.callout b:first-child{color:#fff}
+.statbar{display:flex;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.statbar div{flex:1 1 0;padding:12px 8px;text-align:center;font-weight:700;font-size:.86rem;color:var(--bg);min-width:0}
+.statbar div small{display:block;font-weight:600;font-size:.7rem;opacity:.8}
+.statbar div:nth-child(1){background:#f0c46b}.statbar div:nth-child(2){background:#e3c374}.statbar div:nth-child(3){background:#c9c582}.statbar div:nth-child(4){background:#a9c98f}.statbar div:nth-child(5){background:#88cc9e}.statbar div:nth-child(6){background:#6dceac}.statbar div:nth-child(7){background:#5bd0b9}.statbar div:nth-child(8){background:#4fd1c5}
+.caps{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.cap{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+.cap b{color:var(--gold)}
+.lines{display:grid;gap:10px}
+.line{display:grid;grid-template-columns:150px minmax(0,1fr);gap:14px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.line b{color:var(--gold)}
+.mist{counter-reset:m;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.mist li{counter-increment:m;position:relative;padding:12px 16px 12px 56px;background:var(--card);border:1px solid rgba(248,113,113,.3);border-radius:12px}
+.mist li::before{content:counter(m);position:absolute;left:14px;top:11px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;background:rgba(248,113,113,.15);color:var(--red);border:1px solid rgba(248,113,113,.5)}
+.mist li b{color:#fff}
+ul.tight{margin:.2em 0;padding-left:1.2rem}ul.tight li{margin:.3rem 0}
+details.src{margin:40px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 20px}
+details.src summary{cursor:pointer;font-weight:700;color:var(--gold)}
+details.src ul{columns:2;column-gap:28px;padding-left:1.1rem;font-size:.88rem}
+details.src li{break-inside:avoid;margin:.3rem 0;overflow-wrap:anywhere}
+footer{color:var(--dim);font-size:.85rem;text-align:center;padding:26px 20px 40px}
+@media (min-width:821px){nav.top .wrap{flex-wrap:wrap;justify-content:center}}
+@media (max-width:820px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}.macro{grid-template-columns:1fr}.col{max-width:300px;width:100%;margin:0 auto}}
+@media (max-width:640px){
+ body{font-size:15px}.wrap{padding:0 14px}.card{padding:16px}
+ .sum-grid,.g2{grid-template-columns:1fr}
+ .statbar{flex-direction:column}.statbar div{text-align:left;padding:9px 14px}.statbar div small{display:inline;margin-left:6px}
+ .line{grid-template-columns:1fr;gap:4px}
+ th,td{padding:9px 10px}td.name{white-space:normal}
+ details.src ul{columns:1}
+ #actives thead{display:none}
+ #actives tr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line)}
+ #actives tr:last-child{border-bottom:0}
+ #actives td{padding:0;border:0}
+ #actives td:nth-child(4){grid-column:1/-1;color:var(--muted);font-size:.88rem}
+ .chain li.arrow{display:none}
+ h2{font-size:1.3rem}
+}
+@media (max-width:420px){.g4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<a class="back" href="index.html">← All Chanter guides</a><br>
+<span class="eyebrow">Global · Season 1 · Endgame PvE</span>
+<h1>Chanter Endgame PvE Build</h1>
+<p>One build, one pick for every choice. Made for the global Season 1 client: 4 stigma slots capped at 20, 5 Arcana cards, crit capped at 50%.</p>
+</div></header>
+
+<nav class="top" aria-label="Sections"><div class="wrap">
+<a class="brand" href="#summary">30-sec build</a><a href="#priority">Skill order</a><a href="#actives">Actives</a><a href="#passives">Passives</a><a href="#stigmas">Stigmas</a><a href="#daevanion">Daevanion</a><a href="#macro">Macro</a><a href="#rotation">Rotation</a><a href="#stats">Stats</a><a href="#gear">Gear lines</a><a href="#extras">Stones &amp; Arcana</a><a href="#party">Party role</a><a href="#mistakes">Mistakes</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="summary">
+<div class="card summary">
+<h2>The build in 30 seconds</h2>
+<div class="sum-grid">
+<div class="sum-item"><b>Core skills to 20</b>Dark Crush <span class="spec">3</span><span class="spec">4</span><span class="spec">5</span> · Onslaught <span class="spec">3</span><span class="spec">4</span><span class="spec">5</span> · Spinning Strike <span class="spec">1</span><span class="spec">3</span><span class="spec">5</span></div>
+<div class="sum-item"><b>First goal</b>Dark Crush 16 before anything else. Spec 5 removes its cooldown.</div>
+<div class="sum-item"><b>Passives</b>Wind's Promise → Attack Preparation → Inspiring Spell → Impact Hit</div>
+<div class="sum-item"><b>Stigmas</b>Undefeated Mantra 20 · Power of the Storm 20 · Marchutan's Wrath 1 · Sprint Mantra 10</div>
+<div class="sum-item"><b>Play</b>Hold Onslaught on LMB, tap the RMB line to fire Dark Crush. 2-step macro at 10 ms. Skill Queue off.</div>
+<div class="sum-item"><b>Stats</b>Accuracy until you stop missing, then Combat Speed and Damage Boost. Crit stops at 50%.</div>
+<div class="sum-item"><b>Manastones</b>Back Attack Damage Boost, plus 1 Accuracy per piece until you stop missing.</div>
+<div class="sum-item"><b>Arcana</b>3 Vigor + 2 Magic. Don't overspend, Season 2 replaces the cards.</div>
+</div>
+</div>
+</section>
+
+<section id="priority">
+<h2><span class="num">01</span> Skill upgrade path</h2>
+<p class="muted">Only levels 12, 16 and 20 matter, since that's where spec slots open. Skills reach 14 naturally, ring lines push the core three to 16, and Arcana does the rest.</p>
+<ol class="path">
+<li data-sfx="st"><div><b>Dark Crush → 16</b><span>Spec 5 removes its cooldown. The class doesn't work until you have it.</span></div></li>
+<li data-sfx="nd"><div><b>Onslaught → 16</b><span>Your LMB basic. Spec 4 cuts Spinning Strike's cooldown, spec 5 adds Storm Chain.</span></div></li>
+<li data-sfx="rd"><div><b>Spinning Strike → 16</b><span>Opens the Dark Crush window. Spec 5 ignores Block/Evasion and always crits.</span></div></li>
+<li data-sfx="th"><div><b>Incandescent Blow → 16</b><span>16 is enough for this one.</span></div></li>
+<li data-sfx="th"><div><b>Utility skills → 12</b><span>Impactful Crush, Wave Blow, Rushing Smash, Recuperation. Tremor Crush to 8.</span></div></li>
+<li data-sfx="th"><div><b>Defiance → 16</b><span>Survival during stuns.</span></div></li>
+<li data-sfx="th"><div><b>Dark Crush → Onslaught → Spinning Strike → 20</b><span>In that order, through Arcana rolls.</span></div></li>
+</ol>
+</section>
+
+<section id="actives">
+<h2><span class="num">02</span> Active skills</h2>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Skill</th><th>Level</th><th>Specs</th><th>What the specs do</th></tr></thead>
+<tbody>
+<tr><td class="name">Dark Crush</td><td><span class="lv">20</span></td><td class="sp"><span class="spec">3</span><span class="spec">4</span><span class="spec">5</span></td><td>Crit on hit · Piercing Strike chain · no cooldown</td></tr>
+<tr><td class="name">Onslaught (LMB)</td><td><span class="lv">20</span></td><td class="sp"><span class="spec">3</span><span class="spec">4</span><span class="spec">5</span></td><td>+50% Multi-Hit · −1 s Spinning Strike CD on hit · Storm Chain</td></tr>
+<tr><td class="name">Spinning Strike</td><td><span class="lv">20</span></td><td class="sp"><span class="spec">1</span><span class="spec">3</span><span class="spec">5</span></td><td>−5 s CD · up to +20% vs fewer targets · ignores Block/Evasion, always crits</td></tr>
+<tr><td class="name">Incandescent Blow</td><td><span class="lv">16</span></td><td class="sp"><span class="spec">3</span><span class="spec">5</span></td><td>+12% single target · ignores Block/Evasion, Multi-Hit</td></tr>
+<tr><td class="name">Defiance</td><td><span class="lv">16</span></td><td class="sp"><span class="spec">4</span><span class="spec">5</span></td><td>+2 s Tenacity · +50% PvE Damage Tolerance during Tenacity</td></tr>
+<tr><td class="name">Impactful Crush</td><td><span class="lv">12</span></td><td class="sp"><span class="spec">3</span><span class="spec">4</span></td><td>Cast while moving · +30% Skill Speed</td></tr>
+<tr><td class="name">Wave Blow</td><td><span class="lv">12</span></td><td class="sp"><span class="spec">2</span><span class="spec">4</span></td><td>+6 m range · boss −15% PvE Damage Boost for 10 s</td></tr>
+<tr><td class="name">Recuperation</td><td><span class="lv">12</span></td><td class="sp"><span class="spec">1</span><span class="spec">4</span></td><td>+1 charge · +5% HP restored</td></tr>
+<tr><td class="name">Rushing Smash</td><td><span class="lv">12</span></td><td class="sp"><span class="spec">3</span><span class="spec">4</span></td><td>50% chance to fire Heat Wave Blow · reset CD on kill. Never spec 2</td></tr>
+<tr><td class="name">Tremor Crush</td><td><span class="lv">8</span></td><td class="sp"><span class="spec">2</span></td><td>+10 m range</td></tr>
+<tr><td class="name">Gust Rampage</td><td><span class="lv skip">Skip</span></td><td>—</td><td>Skip for now. Season 1 bosses only stagger 2–3 times</td></tr>
+<tr><td class="name">Heat Wave Blow</td><td><span class="lv skip">Skip</span></td><td>—</td><td>Not worth points on global</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="passives">
+<h2><span class="num">03</span> Passives, in order</h2>
+<p class="muted">Max the first four with skill points, gear lines and Arcana. The rest max on skill points alone.</p>
+<ul class="chain">
+<li>1. Wind's Promise<small>Crit Dmg + 50% extra hit on crit</small></li><li class="arrow">→</li>
+<li>2. Attack Preparation<small>PvE Dmg Boost, Defense, Accuracy</small></li><li class="arrow">→</li>
+<li>3. Inspiring Spell<small>Crit + Perfect Chance</small></li><li class="arrow">→</li>
+<li>4. Impact Hit<small>Double Chance</small></li><li class="arrow">→</li>
+<li>5. Protection Circle</li><li class="arrow">→</li>
+<li>6. Earth's Promise</li><li class="arrow">→</li>
+<li>7. Blessing of Life</li><li class="arrow">→</li>
+<li>8. Survival Willpower</li>
+<li class="skipped">Skip: Crossguard, Raging Spell</li>
+</ul>
+</section>
+
+<section id="stigmas">
+<h2><span class="num">04</span> Stigmas</h2>
+<p class="muted">Slots unlock at levels 22, 27, 32 and 37. Shard order: Undefeated 5 → Storm 5 → Undefeated 20 → Storm 20 → Sprint 10 → Marchutan 1.</p>
+<div class="grid g4">
+<div class="card slot g"><span class="sn">Slot 1</span><div class="ico">U</div><h3>Undefeated Mantra</h3><span class="lv">20</span><p>Crit, Accuracy, Crit Dmg and Double Chance, plus 20% PvE Dmg Boost/Tolerance at 20. Keep it on 100% of the time.</p></div>
+<div class="card slot g"><span class="sn">Slot 2</span><div class="ico">S</div><h3>Power of the Storm</h3><span class="lv">20</span><p>Level 5 drops the CD from 120 to 90 s. Level 20 adds the Attack buff for you and the party.</p></div>
+<div class="card slot"><span class="sn">Slot 3</span><div class="ico">M</div><h3>Marchutan's Wrath</h3><span class="lv">1</span><p>Opens Dark Crush for 3 s. Higher levels only add PvP effects.</p></div>
+<div class="card slot"><span class="sn">Slot 4</span><div class="ico">R</div><h3>Sprint Mantra</h3><span class="lv">10</span><p>The party mantra. Toggle it on and leave it.</p></div>
+</div>
+</section>
+
+<section id="daevanion">
+<h2><span class="num">05</span> Daevanion</h2>
+<div class="card">
+<ol class="steps">
+<li><b>Blue skill nodes first:</b> +1 Dark Crush, Onslaught, Spinning Strike and Incandescent Blow on each of the four PvE boards (+4 each).</li>
+<li><b>Orange nodes:</b> Nezekan Combat Speed + CDR, Zikel Damage Boost, Vaizel Crit Dmg Boost, Triniel Multi-Hit Chance.</li>
+<li><b>Green passive nodes:</b> Attack Preparation, Inspiring Spell, Protection Circle, Wind's Promise, Impact Hit, Earth's Promise.</li>
+<li><b>Last:</b> Impactful Crush, Wave Blow, Defiance.</li>
+</ol>
+<div class="callout"><b>Skip:</b> Max MP, Heat Wave Blow and Gust Rampage nodes, Crossguard, Raging Spell, Multi-Hit Resist, Crit Dmg Tolerance. You can't fill all four boards (570 crystals needed, about 416 obtainable), so skipping these matters. Global has no Ariel board, and Azphel is PvP-only.</div>
+</div>
+</section>
+
+<section id="macro">
+<h2><span class="num">06</span> Macro setup</h2>
+<div class="card macro">
+<div>
+<ol class="steps">
+<li><b>Build the RMB hotbar line</b> as shown on the right. The bottom slot (Row 0) fires first: Dark Crush, then Spinning Strike, Impactful Crush, Incandescent Blow.</li>
+<li><b>Put Marchutan's Wrath on its own key.</b> You press it by hand to extend the Dark Crush window.</li>
+<li><b>Make the in-game macro: 2 steps, 10 ms each.</b> Step 1 = the Dark Crush line, step 2 = Onslaught.</li>
+<li><b>Turn Skill Queue OFF</b> so the animation cancel works.</li>
+<li><b>Play it:</b> hold LMB (Onslaught) and tap RMB. Cancelling Dark Crush out of Onslaught does 9–12% more damage than holding Dark Crush.</li>
+<li><b>Dark Crush not at 16 yet?</b> Put one opener on its own key and press it whenever Dark Crush comes back.</li>
+</ol>
+<div class="callout warn"><b>Never put a mantra in a macro.</b> Mantras are toggles, so the macro switches them off. Keep Undefeated Mantra and Sprint Mantra on their own keys.</div>
+</div>
+<div>
+<div class="col" aria-label="RMB hotbar line, Row 0 at the bottom">
+<div class="row first"><i>Row 0</i>Dark Crush</div>
+<div class="row"><i>Row 1</i>Spinning Strike</div>
+<div class="row"><i>Row 2</i>Impactful Crush</div>
+<div class="row"><i>Row 3</i>Incandescent Blow</div>
+</div>
+<div class="colcap">RMB line · Row 0 (bottom) fires first</div>
+</div>
+</div>
+</section>
+
+<section id="rotation">
+<h2><span class="num">07</span> Rotation and opener</h2>
+<div class="card">
+<p class="muted" style="margin-top:0">Dark Crush can only be cast for 2 s after Spinning Strike or Impactful Crush, and for 3 s after Marchutan's Wrath. Inside that window you spam it.</p>
+<ol class="steps">
+<li><b>Before the pull:</b> Undefeated Mantra and Sprint Mantra on.</li>
+<li><b>Pull:</b> Power of the Storm, then Rushing Smash in.</li>
+<li><b>Open the window:</b> Spinning Strike, then hold the macro (LMB Onslaught + RMB line) to spam Dark Crush.</li>
+<li><b>Burst under Storm:</b> Spin → Dark Crush → Impactful → Dark Crush → Spin → Dark Crush. As the window ends, press Marchutan's Wrath for 3 more seconds.</li>
+<li><b>Upkeep:</b> Power of the Storm right before each boss stagger (call it for the party). Wave Blow in animation gaps. Defiance when stunned.</li>
+</ol>
+</div>
+</section>
+
+<section id="stats">
+<h2><span class="num">08</span> Stat priority</h2>
+<div class="statbar" role="list">
+<div role="listitem">1 Accuracy<small>until no misses</small></div>
+<div role="listitem">2 Combat Speed</div>
+<div role="listitem">3 Damage Boost</div>
+<div role="listitem">4 Weapon Dmg Boost</div>
+<div role="listitem">5 Attack</div>
+<div role="listitem">6 Double Chance</div>
+<div role="listitem">7 Crit Damage</div>
+<div role="listitem">8 Crit<small>cap 50%</small></div>
+</div>
+<div class="caps">
+<div class="cap">Crit rate cap <b>50%</b></div>
+<div class="cap">Cooldown Reduction stops helping past <b>60%</b></div>
+<div class="cap">Accuracy: stop when you're <b>no longer parried or missing</b></div>
+</div>
+<p class="muted">Bosses parry front attacks, so fight from behind. Dark Crush spec 3 and Spinning Strike spec 5 always crit anyway, which is why Crit comes last.</p>
+</section>
+
+<section id="gear">
+<h2><span class="num">09</span> Gear lines per slot</h2>
+<div class="tbl-wrap"><table>
+<thead><tr><th>Slot</th><th>Soul Binding lines</th></tr></thead>
+<tbody>
+<tr><td class="name">Staff, Guard</td><td>Damage Boost, Combat Speed, Weapon Damage Boost, Might, Precision <span class="note">Never skill lines here.</span></td></tr>
+<tr><td class="name">Helm</td><td>Double Chance, Attack Increase, Attack, Accuracy, Wind's Promise</td></tr>
+<tr><td class="name">Pauldrons</td><td>Crit Dmg Boost, Double Chance, Defense Increase, Attack, Accuracy</td></tr>
+<tr><td class="name">Breastplate</td><td>Damage Boost, Perfect Chance, Defense Increase, Attack, Accuracy</td></tr>
+<tr><td class="name">Greaves</td><td>Damage Tolerance, Perfect Chance, Attack Increase, Attack, Accuracy</td></tr>
+<tr><td class="name">Gloves</td><td>Combat Speed, Perfect Chance, Defense Increase, Attack, Accuracy</td></tr>
+<tr><td class="name">Cloak</td><td>Double Chance, Attack Increase, Attack, Accuracy, Wind's Promise</td></tr>
+<tr><td class="name">Boots</td><td>Move Speed, Perfect Chance, Defense Increase, Attack, Accuracy</td></tr>
+<tr><td class="name">Necklace</td><td>Combat Speed, Might, Precision, Attack, Attack Preparation</td></tr>
+<tr><td class="name">Earrings</td><td>Move Speed, Might, Precision, Attack, Inspiring Spell</td></tr>
+<tr><td class="name">Rings</td><td>Might, Precision, Dark Crush, Onslaught, Spinning Strike <span class="note">The only slot for active skill lines.</span></td></tr>
+<tr><td class="name">Bracelets</td><td>Illusion, Wisdom, Destruction, Time</td></tr>
+</tbody></table></div>
+<p class="muted">A Philosopher's Stone extra line does not survive transfer or tier-up, so only use one on gear you'll keep.</p>
+</section>
+
+<section id="extras">
+<h2><span class="num">10</span> Manastones, Arcana, wings, pets</h2>
+<div class="lines">
+<div class="line"><b>Manastones</b><span>Back Attack Damage Boost, with one Accuracy stone per piece until you stop missing. Stones are lost on transfer.</span></div>
+<div class="line"><b>Arcana</b><span>3 Vigor + 2 Magic: Parchment of Vigor (Dark Crush, Onslaught, Spinning Strike), Compass of Vigor (Incandescent Blow, Recuperation, Defiance), Chalice of Vigor (any key skill short of 20), Bell of Magic (Attack Preparation, Protection Circle), Mirror of Magic (Wind's Promise, Inspiring Spell, Impact Hit). Don't overspend, Season 2 replaces them.</span></div>
+<div class="line"><b>Wings</b><span>Talisra (CDR + Accuracy + Attack). Collect every wing anyway, since owned effects stack.</span></div>
+<div class="line"><b>Pets</b><span>Level every genus to 10 before locking. Then slots 1/5 Max Attack, 2/8 HP%, 3/6/9 Accuracy, 4 the genus offence line (e.g. Varian Back Attack Dmg, Fera Weapon Dmg), 7 Damage Tolerance.</span></div>
+</div>
+</section>
+
+<section id="party">
+<h2><span class="num">11</span> Party role</h2>
+<div class="grid g2">
+<div class="card"><h3>Your buffs</h3>
+<ul class="tight">
+<li><b>Undefeated Mantra</b>, 100% uptime</li>
+<li><b>Power of the Storm</b> before each boss stagger</li>
+<li><b>Wave Blow</b> spec 4: boss −15% PvE Damage Boost</li>
+<li><b>Earth's Promise</b> and the <b>Protection Circle</b> barrier</li>
+</ul>
+<p class="muted">These don't stack with a Cleric's: Undefeated vs Light of Protection, Storm vs Earth's Blessing, Earth's Promise vs Chain of Torment, Wave Blow vs Debilitating Mark. Two Chanters only get one mantra.</p>
+</div>
+<div class="card"><h3>When to heal</h3>
+<ul class="tight">
+<li>Use <b>Recuperation</b> (2 charges) when the party's HP drops.</li>
+<li>The rest of the time, <b>keep dealing damage</b>. More damage and buffs help the party more than extra healing.</li>
+<li>If you're the only healer, raise Recuperation to <b>16 with spec 5</b> (−3 s CD).</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="mistakes">
+<h2><span class="num">12</span> 5 common mistakes</h2>
+<ol class="mist">
+<li><b>Putting mantras in a macro.</b> It toggles them off.</li>
+<li><b>Leveling anything before Dark Crush 16.</b> Without the cooldown removal the class doesn't work.</li>
+<li><b>Skill lines on the staff or guard.</b> Active skill lines belong on rings.</li>
+<li><b>Skipping Accuracy and chasing Crit past 50%.</b> Dark Crush gets parried and the window is wasted.</li>
+<li><b>Holding Dark Crush instead of cancelling from Onslaught.</b> You lose 9–12% damage.</li>
+</ol>
+</section>
+
+<details class="src">
+<summary>Sources</summary>
+<ul>
+<li><a href="https://couga54.github.io/aion2-guides/en/chanter/">couga54 Chanter guide (global S1)</a></li>
+<li><a href="https://metaroad.gg/aion2/build-guides/chanter-pve-support-build">MetaRoad: Chanter PvE Support Build</a></li>
+<li><a href="https://metabot.gg/en/aion-2/classes/chanter/build">MetaBot.GG Chanter build planner</a></li>
+<li><a href="https://aion2guidance.com/zh-tw/chanter/">aion2guidance.com Chanter (zh-TW)</a></li>
+<li><a href="https://www.aionstrategies.com/2026/10/aion-2-chanter-pve-guide.html">aionstrategies Chanter PvE guide</a></li>
+<li><a href="https://aion2.grimvane.app/companion/wiki/chanter-guide/">Aion 2 Companion Chanter guide</a></li>
+<li><a href="https://games.gg/aion-2/guides/aion-2-chanter-guide/">games.gg Chanter guide</a></li>
+<li><a href="https://www.youtube.com/watch?v=V6hnpXUQwHM">Society of Gaming: AION 2 Chanter OP Build Guide</a></li>
+<li><a href="https://www.youtube.com/watch?v=zxq03c3NhEw">WallyJTV: The AION 2 Chanter Guide You Need</a></li>
+<li><a href="https://www.youtube.com/watch?v=2qTjfkuzdj4">Grobs: Chanter PvE</a></li>
+<li><a href="https://www.youtube.com/watch?v=m2U09MbGu-o">Antochi: Chanter macro</a></li>
+<li><a href="https://www.youtube.com/watch?v=bsLKvL6s9dc">aLuckyRO: Chanter</a></li>
+<li><a href="https://www.youtube.com/watch?v=UQGG7vU7Q_Q">하구 (Hagu): 호법성 스킬 PVE 최최신 가이드</a></li>
+<li><a href="https://www.youtube.com/watch?v=xolpXIkjaSo">하구 (Hagu): 호법성 스킬 PVE 최신 종합 가이드</a></li>
+<li><a href="https://www.youtube.com/watch?v=8mc86yLui1I">하구 (Hagu): 호법성 매크로+암격쇄 사용설명서</a></li>
+<li><a href="https://www.youtube.com/watch?v=HkQMzdONXL8">Hojini's Game World: 호법성 아르카나 완벽 가이드</a></li>
+<li><a href="https://www.youtube.com/watch?v=PMQNCkPQaio">밍구 (Miggu): 호법성 PVE 스킬트리, 아르카나</a></li>
+<li><a href="https://www.youtube.com/watch?v=ITyrsTM55vQ">김칼투: 호법성 PVE 스킬 및 스티그마 가이드</a></li>
+<li><a href="https://www.inven.co.kr/board/aion2/6444/1205">Inven: 부위별 영혼 각인 우선순위</a></li>
+<li><a href="https://www.inven.co.kr/board/aion2/6451/11651">Inven: 560+ 호법의 강의 및 방향성</a></li>
+<li><a href="https://forum.gamer.com.tw/C.php?bsn=82913&amp;snA=3488">Bahamut: 護法技能、烙印</a></li>
+<li><a href="https://forum.gamer.com.tw/C.php?bsn=82913&amp;snA=6186">Bahamut: 9/16更新後護法星戰鬥優化指南</a></li>
+<li><a href="https://forum.gamer.com.tw/Co.php?bsn=82913&amp;sn=7235">Bahamut: 護法星技能與大致打法</a></li>
+<li><a href="https://news.17173.com/content/12222025/164037427.shtml">17173: PVE向上班族护法星心得</a></li>
+<li><a href="https://www.reddit.com/r/Aion2/comments/1v72mgd/">r/Aion2: Is Chanter really so bad in Aion 2?</a></li>
+</ul>
+</details>
+</main>
+<footer>Community-sourced guide · global Season 1 · not official NCSOFT content</footer>
+</body>
+</html>
